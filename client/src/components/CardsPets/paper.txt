@@ -1,0 +1,123 @@
+     
+     
+//============MUI===============
+/* import { styled } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import ButtonBase from '@mui/material/ButtonBase';
+import Box from '@mui/material/Box'
+
+
+const Img = styled('img')({
+  marginTop:1,
+  display: 'block',
+borderRadius:5,
+  maxWidth: '100%',
+  maxHeight: '100%',
+});
+ */
+//====================================
+
+     
+      <Paper
+          sx={{
+            p: 1,
+            margin: 3,
+            maxWidth: 230,
+            maxHeight:250,
+            flexGrow: 1,
+            borderRadius:1
+          /*   backgroundColor: (theme) =>
+              theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+         */
+            }}
+        >
+    {/*       <Grid container spacing={2} key={p.id}  > */}
+            <Grid item>
+              <ButtonBase sx={{ width:220, height: 200 ,}}>
+                <Img alt="complex" src={p.image} />
+              </ButtonBase>
+            </Grid>
+            <Grid item xs={12} sm={3} md={4} container >
+              <Grid item xs container  spacing={4}>
+                <Grid item >
+                  <Typography  variant="subtitle1" component="div">
+                   {p.name}
+                  </Typography>
+                  <Typography variant="body2" >
+                   {p.timewait}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {p.description}
+                  </Typography>
+                </Grid>
+               
+              </Grid>
+         
+            </Grid>
+      {/*     </Grid> */}
+        </Paper>
+    
+
+
+
+
+
+
+
+
+
+
+
+     <Card  
+             key={id}
+              variant="outlined"
+              sx={{
+                minHeight: "280px",
+                width: 200,
+                backgroundColor: "#fff",
+                borderColor: "#000",
+              }}
+            >
+              <ImageList
+                sx={{ width: 500, height: 200, ml: 1 }}
+                rowHeight={164}
+              >
+                <ImageListItem key={imagen}>
+                  <img
+                    src={`${imagen}?w=164&h=164&fit=crop&auto=format`}
+                    srcSet={`${imagen}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                    alt="mascota"
+                    loading="lazy"
+                  />
+                </ImageListItem>
+              </ImageList>
+              <CardContent
+                sx={{
+                  alignItems: "self-end",
+                  justifyContent: "flex-end",
+                  background: "pink",
+                  border: "1px solid",
+                  borderColor: "black",
+                }}
+              >
+                <Typography gutterBottom variant="h5" component="div">
+                  {nombre}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Encontrado: {fecha}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                 Descripcion:  {descripcion}
+                </Typography>
+            
+              </CardContent>
+
+            {/*   <CardActions> */}
+                <Button fullWidth="true" variant='outline' sx={{backgroundColor:"#f06292" , color:"black"}}   
+                component={Link}
+                to={`/pets/${id}`}
+                > Detalle </Button>
+             {/*  </CardActions> */}
+            </Card>

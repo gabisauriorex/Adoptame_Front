@@ -1,0 +1,16 @@
+los chicos del back van al repo api
+los chicoas del front van al repo client
+hola.gabi prueba 3
+hola soy gaston
+<<<<<<< HEAD
+gabi estuvo aquí de nuevo y está intentando robarte todo lo que tienes
+
+ahora modifoco yo
+probando de nuevo
+=======
+<<<<<<< HEAD
+hola soy gabi de nuevo
+=======
+gabi estuvo aquí de nuevo
+>>>>>>> gabi
+>>>>>>> de7a757397f89f962f08341a26dc148985151e3d
