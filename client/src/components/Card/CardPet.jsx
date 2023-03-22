@@ -20,11 +20,6 @@ const Img = styled('img')({
   height:'140px',
   borderRadius:"5px",
   padding:'1px'
-  
-   /*  display: 'flex',
-     flexDirection:'row',
-    justifyContent:'center',
-    alignItems:'center' */
 });
 
 
