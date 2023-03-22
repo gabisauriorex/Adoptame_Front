@@ -9,7 +9,7 @@ import {GET_PETS,POST_SUCCESS, GET_DETAIL_PETS,
  export const postPet = (payload)=>{
   return async (dispatch) => {
 
-    console.log(payload)
+   // console.log(payload)
     try {
     await axios.post('pets', payload);
       dispatch({

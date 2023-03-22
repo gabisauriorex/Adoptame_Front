@@ -12,7 +12,7 @@ import { faPaw } from '@fortawesome/free-solid-svg-icons';
 import {Link} from 'react-router-dom'
 
 import './CardPet.css'
-import { left } from '@popperjs/core';
+
 
 const Img = styled('img')({
   margin:'1px',
@@ -39,10 +39,10 @@ function CardPet({id,image,name,timewait,description })
                 >
 
                   <Grid >
-                  <Typography  variant="h6" component="div" sx={{backgroundColor:"#ffa733" ,borderRadius:5 ,margin:"3px"}}>
-                      {name}    
+                  <Typography  variant="h6" component="div"  color="#0f4d71" /* sx={{backgroundColor:"#ffa733" ,borderRadius:5 ,margin:"3px"}} */>
+                      {name}       <FontAwesomeIcon icon={faPaw} bounce/> 
                   </Typography>
-                  {/*    <FontAwesomeIcon icon={faPaw}/> */}
+                 
                  
                   </Grid>
                   <Grid item xs={12} sm={4} md={4}>

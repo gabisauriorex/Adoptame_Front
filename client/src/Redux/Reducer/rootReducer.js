@@ -9,11 +9,12 @@ import {
   FILTER_BY_SIZE,
 } from "../ActionsTypes/actions_types";
 
-
+ import {pets} from '../../Datos.js' 
 
 const initialState = {
-  pets: [],
+  pets: pets,
   detail:[],
+  copia_pets2:pets,
   formData:{}
 
 };
@@ -25,6 +26,8 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         pets: action.payload,
+        copia_pets2:action.payload,
+      
       };
     case GET_DETAIL_PETS:
       return {
@@ -40,71 +43,96 @@ export default function rootReducer(state = initialState, action) {
 
 
      //FILTROS
-/*     case FILTER_BY_BREED:
-      const fil_breed = [...state.pets].filter( e => e.breed.toLowerCase() = e.action.payload.toLowerCase())
+  case FILTER_BY_BREED:
+
+  // const fil_breed = state.copia_pets.filter( e => e.breed.toLowerCase() === action.payload.toLowerCase())
+     const filter_breed= action.payload==='todos'?
+      state.copia_pets2
+      :state.copia_pets2.filter(
+       e => e.breed.toLowerCase() === action.payload.toLowerCase()
+      )
       //console.log(fil_breed);
-      return{
-        ...state,
-        pets: fil_breed
-      };
-    case FILTER_BY_SIZE:
-      const size_pet = state.pets;
-     
-      if (action.payload === 'grande') {
-        let fil_size = size_pet.filter( e => e.height >= 45)
-      } else if (action.payload === 'chico') {
-        let fil_size = size_pet.filter( e => e.height <= 25)
-      } else {
-        let fil_size = size_pet.filter( e => e.height > 25 && e.height < 45)
+      if(filter_breed.length >0)
+      {
+        return{
+          ...state,
+          pets:filter_breed, 
+        
+        }
       }
-      // console.log(fil_size);
+      else{
+        return{
+          ...state,
+          pets:state.copia_pets2
+        };
+      }
+
+      case FILTER_BY_ANIMAL:
+    /*     const filter_animal = action.payload==='gato'? state.pets.filter( e => e.animal.toLowerCase() = e.action.payload.toLowerCase())
+      //console.log(fil_animal); */
+    
+      const filter_animal =
+      action.payload === "perro"
+        ? state.copia_pets2.filter((a) => a.animal==='perro')
+        : state.copia_pets2.filter((a) => a.animal==='gato')
+      return {
+        ...state, //me devuelve el estado anterior
+        pets: action.payload==='todos'?state.copia_pets2:filter_animal
+      };
+    
+     
+    case FILTER_BY_SIZE:
+ 
+       let fil_size=null;
+      if (action.payload === 'Grande') {
+        fil_size = state.copia_pets2.filter( e => e.height >= 45)
+      } else if (action.payload === 'Chico') {
+         fil_size = state.copia_pets2.filter( e => e.height <= 25)
+      } else {
+         fil_size = state.copia_pets2.filter( e => e.height > 25 && e.height < 45)
+      }
+
       return {
         ...state,
-        pets: fil_size
+        pets:action.payload==='todos'?state.pets : fil_size
       };
-      case FILTER_BY_COLOR:
-        const fil_color = [...state.pets].filter( e => e.color.toLowerCase() = e.action.payload.toLowerCase())
-      //console.log(fil_color);
-      return{
-        ...state,
-        pets: fil_color
-      };
-      case FILTER_BY_ANIMAL:
-        const fil_animal = [...state.pets].filter( e => e.animal.toLowerCase() = e.action.payload.toLowerCase())
-      //console.log(fil_animal);
-      return{
-        ...state,
-        pets: fil_animal
-      };
-      case FILTER_BY_IDENT:
-        const fil_ident = [...state.pets].filter( e => e.identified.toLowerCase() = e.action.payload.toLowerCase())
-      //console.log(fil_ident); */
-      return{
-        ...state,
-        pets: fil_ident
-      };
-      
+ 
 
-    //⬇️⬇️ CASE FORM....
-    // case POST_REQUEST:
-    //   return{
-    //     ...state,
-    //     isLoading: true,
-    //     error: null,
-    //   };
-    // case POST_SUCCESS:
-    //   return {
-    //     ...state,
-    //     isLoading: false,
-    //     form: action.payload,
-    //   }
-    // case POST_FAILURE:
-    //   return{
-    //     ...state,
-    //     isLoading: false,
-    //     error: action.payload
-    //   }
-//---!FORM!
+     case FILTER_BY_COLOR:
+        const filter_color = state.copia_pets2.filter( e => e.color === action.payload)
+
+        if(filter_color.length===0)
+        {
+         return{
+          ...state,
+         pets: action.payload==='todos'?state.copia_pets2:state.pets
+         }
+
+        }else{
+            return{
+              ...state,
+              pets:filter_color
+            }
+        } 
+      case FILTER_BY_IDENT:
+      const filter_ident =
+      action.payload === "Encontra"
+        ? state.copia_pets2.filter((e) => e.identified)
+        : state.copia_pets2.filter((e) => !e.identified);
+
+    if (filter_ident === 0) {
+      return {
+        ...state, //me devuelve el estado anterior
+        pets: state.copia_pets2,
+      };
+    } else {
+      return {
+        ...state, //me devuelve el estado anterior
+        pets:
+          action.payload === "todos" ? state.copia_pets2 : filter_ident,
+      };
+    }
+    
     default:
       return state;
   }
