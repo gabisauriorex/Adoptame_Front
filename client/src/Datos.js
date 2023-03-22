@@ -6,12 +6,14 @@
     image: "https://www.lavanguardia.com/files/og_thumbnail/uploads/2022/03/15/62308d3f4a45d.png",
     description: "una perra buena ",
     timewait:"20/03/2015",
-    raza: "cokkie",
-    tamanio: "mediano",
+    breed: "cokkie",
+    animal:"perro",
+    height : 7,
+    color:"Otro",
+    identified:true,
     vacunas:"todas",
     edad:"4 años",
-    sexo:"hembra",
-    color:"marron",
+    sex:"hembra",
     especie:"perro"
 
   },
@@ -21,13 +23,16 @@
     name:"Dai",
     image: "https://nfnatcane.es/blog/wp-content/uploads/2020/09/perro-de-raza-boxer.jpg",
     description: "una perra buena ",
-   timewait:"20/03/2015",
-    raza: "boxer",
-    tamanio: "grande",
+    timewait:"20/03/2015",
+    breed: "boxer",
+    animal:"perro",
+    height : 28,
+    color:"Amarillo",
+    identified:false,
     vacunas:"todas",
     edad:"2 años",
     sexo:"hembra",
-    color:"negro",
+
     especie:"perro"
 
   },
@@ -38,12 +43,15 @@
     image: "https://www.zooplus.es/magazine/wp-content/uploads/2019/01/Gato-siames.jpg",
     description: "un siames ",
     timewait:"20/03/2015",
-    raza: "cokkie",
-    tamanio: "chico",
+    breed: "cokkie",
+    height : 45,
+    animal:"gato",
+    color:"Blanco",
+    identified:true,
     vacunas:"todas",
     edad:"2 años",
     sexo:"macho",
-    color:"marron",
+
     especie:"gato"
 
   },
@@ -54,12 +62,15 @@
     image: "https://live.staticflickr.com/8656/15935863206_fc6aa5a4a0_b.jpg",
     description: "una ave ",
     timewait:"20/03/2015",
-    raza: "paloma",
-    tamanio: "mediano",
+    breed: "otro",
+    animal:"gato",
+    height : 15,
+    color:"Cafe oscuro",
+    identified:false,
     vacunas:"todas",
     edad:"1 años",
     sexo:"macho",
-    color:"gris",
+
     especie:"ave"
 
   },
@@ -69,13 +80,17 @@
     name:"Javier",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Okonjima_Lioness.jpg/688px-Okonjima_Lioness.jpg",
     description: "un leon loco ",
+
     timewait:"20/03/2015",
-    raza: "felino",
-    tamanio: "mediano",
+    breed: "Angora",
+    animal:"gato",
+    height : 38,
+    color:"Cafe claro",
+    identified:true,
     vacunas:"todas",
     edad:"4 años",
     sexo:"macho",
-    color:"marron",
+
     especie:"salvaje"
 
   },
@@ -86,17 +101,18 @@
     image: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Corvus_tasmanicus_-_Collinsvale.jpg",
     description: "bromista ",
     timewait:"20/03/2015",
-    raza: "corvinus",
-    tamanio: "chico",
+    animal:"perro",
+    breed: "labrador",
+    height : 90,
+    color:"Gris",
+    identified:false,
     vacunas:"ninguna",
     edad:"4 años",
     sexo:"macho",
-    color:"negro",
+
     especie:"omnivoro"
 
   }
-
-
 
 
     /* 

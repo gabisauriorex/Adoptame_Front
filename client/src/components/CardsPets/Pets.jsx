@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPets } from "../../Redux/Actions/actions_pets";
 import CardPet from "../Card/CardPet";
- import {pets} from '../../Datos.js' 
+ //import {pets} from '../../Datos.js' 
 import style from "./Pets.module.css";
 
 //===============
@@ -13,7 +13,7 @@ import Grid from '@mui/material/Grid';
 
 function Pets() {
   const dispatch = useDispatch(); 
- //const pets = useSelector((state) => state.pets);
+ const pets = useSelector((state) => state.pets);
 
   useEffect(() => {
     dispatch(getPets());
