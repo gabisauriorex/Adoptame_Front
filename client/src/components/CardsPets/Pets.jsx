@@ -13,7 +13,7 @@ import Grid from '@mui/material/Grid';
 
 function Pets() {
   const dispatch = useDispatch(); 
- const pets = useSelector((state) => state.pets);
+ //const pets = useSelector((state) => state.pets);
 
   useEffect(() => {
     dispatch(getPets());

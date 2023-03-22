@@ -40,7 +40,7 @@ export default function rootReducer(state = initialState, action) {
 
 
      //FILTROS
-    case FILTER_BY_BREED:
+/*     case FILTER_BY_BREED:
       const fil_breed = [...state.pets].filter( e => e.breed.toLowerCase() = e.action.payload.toLowerCase())
       //console.log(fil_breed);
       return{
@@ -49,13 +49,13 @@ export default function rootReducer(state = initialState, action) {
       };
     case FILTER_BY_SIZE:
       const size_pet = state.pets;
-      const fil_size=null;
+     
       if (action.payload === 'grande') {
-         fil_size = size_pet.filter( e => e.height >= 45)
+        let fil_size = size_pet.filter( e => e.height >= 45)
       } else if (action.payload === 'chico') {
-        fil_size = size_pet.filter( e => e.height <= 25)
+        let fil_size = size_pet.filter( e => e.height <= 25)
       } else {
-         fil_size = size_pet.filter( e => e.height > 25 && e.height < 45)
+        let fil_size = size_pet.filter( e => e.height > 25 && e.height < 45)
       }
       // console.log(fil_size);
       return {
@@ -78,7 +78,7 @@ export default function rootReducer(state = initialState, action) {
       };
       case FILTER_BY_IDENT:
         const fil_ident = [...state.pets].filter( e => e.identified.toLowerCase() = e.action.payload.toLowerCase())
-      //console.log(fil_ident);
+      //console.log(fil_ident); */
       return{
         ...state,
         pets: fil_ident
