@@ -20,12 +20,13 @@ const theme = createTheme({
   },
 });
 
+const {VITE_DOMAIN,VITE_CLIENT_ID}=import.meta.env;
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
   <Auth0Provider
-    domain="dev-xyzpxnrxxj6ccj6h.us.auth0.com"
-    clientId="2SEr3qXHUVz1DdJjzSMf7ib2oeO4oIuK"
+    domain={VITE_DOMAIN}
+    clientId={VITE_CLIENT_ID}
     authorizationParams={{
       redirect_uri: window.location.origin
     }}

@@ -5,7 +5,7 @@ import React from "react";
 import Adopta from "./components/Adopta/Adopta";
 import Detail from "./components/Detail/Detail";
 import Dona from './components/Dona/Dona'
-import  Dashboard  from './common/NavBar/Dashboard'
+import NavBar  from './common/NavBar/NavBar'
 import About from "./pages/About/About";
 import Footer from './components/Footer/Footer'
 import Loading from "./components/Loading/Loading";
@@ -16,9 +16,8 @@ function AllRoutes() {
 
   return (
     <div>
-          <Dashboard/>  
-
-        <Routes>
+        <NavBar/>  
+          <Routes>
           <Route exact path="/"  element={<Landing/>} /> 
           <Route exact path="/Adopta" element={<Adopta/>} />
           <Route exact path="/pets/:id" element={<Detail/>} />

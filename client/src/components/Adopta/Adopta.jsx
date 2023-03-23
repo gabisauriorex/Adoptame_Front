@@ -7,9 +7,7 @@ function Adopta() {
     <div>
        <h1>Formulario de adopcion</h1>
 
-      <Link to="/About">
-        <button > ir a about</button>
-      </Link>
+  
 
     </div>
   )

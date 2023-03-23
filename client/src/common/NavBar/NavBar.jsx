@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React,{useState} from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import{ Drawer} from '@mui/material';
@@ -16,9 +16,9 @@ import {ListItemButton,ListItemIcon,ListItemText,Divider,IconButton,Button} from
 import patita from '../../Images/patita.ico'
 //=======================
 import SearchBar from '../SearchBar/SearchBar';
-import Login from '../Login/Login';
+import Account from '../Account/Account';
 import {Link} from "react-router-dom";
-import './Dashboard.css'
+import './NavBar.css'
  
 
 
@@ -49,15 +49,15 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function Dashboard() {
+export default function NavBar() {
   const theme = useTheme(); 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
     setTimeout(() => {
       setOpen(false)
-    }, 5000);
+    }, 4000);
    
   };
 
@@ -133,9 +133,7 @@ const arrayNav2=[
             to="/Home"
           >
             Adoptame  
-          {/*       <IconButton aria-label="icono"  color='inherit' >
-             <Pets/>
-          </IconButton>   */}
+         
           <img src={patita} width="30px" height="30px" className='margenIzquierdo' />
 
           </Typography>
@@ -143,11 +141,8 @@ const arrayNav2=[
           <Box sx={{flexGrow:1 }}>
            <SearchBar/>   
          </Box>
-     {/*     <Box sx={{display:"flex" ,flexDirection:"row" , fontSize:1 }}>
-         <Button  variant='outlined' size="small" sx={{flexGrow:0 }}component={Link} to="/Login" >Login/Register</Button> 
-        </Box>  */}
-
-       <Login/>
+    
+          <Account/>   
         
         </Toolbar>
       </AppBar>
@@ -190,7 +185,6 @@ const arrayNav2=[
             <ListItem key={item2.name} disablePadding>
               <ListItemButton component={Link} to={item2.path}>
                 <ListItemIcon>
-               {/*   {index % 2 === 0 ? <GroupAdd/> : <Lock />}  */}
                {item2.icon}
                 </ListItemIcon>
                 <ListItemText primary={item2.name} />
