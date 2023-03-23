@@ -1,37 +1,3 @@
-
-
-
-
-
-
-
-import React from 'react'
-
-export default function FormLogin() {
-  return (
-    <div>
-       <h2>Form Login</h2>
-    </div>
-  )
-}
-
-
-
-
-
-
-
-
-
-/* 
-
-
-
-
-
-
-
-
 import { React, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Icon } from "@iconify/react";
@@ -142,10 +108,45 @@ function FormLogin({ handleChange, handleBlur, handleSubmits, form, errors }) {
 
 export default FormLogin;
 
+// import React, { useState } from 'react';
+// import { FormControl, TextField, Button } from '@material-ui/core';
+// import ValidatorForm from 'react-material-ui-form-validator';
 
+// function FormLogin() {
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
 
+//   function handleSubmit(event) {
+//     event.preventDefault();
+//   // Aquí deberías enviar la información del formulario al servidor o manejar la lógica de inicio de sesión en el lado del cliente
+//   console.log(email, password);
+// }
 
+//   return (
+//     <ValidatorForm onSubmit={handleSubmit}>
+//       <FormControl>
+//         <TextField
+//           label="Correo electrónico"
+//           type="email"
+//           value={email}
+//           onChange={(event) => setEmail(event.target.value)}
+//           validators={['required', 'isEmail']}
+//           errorMessages={['Este campo es requerido', 'Ingresa un correo válido']}
+//         />
+//         <TextField
+//           label="Contraseña"
+//           type="password"
+//           value={password}
+//           onChange={(event) => setPassword(event.target.value)}
+//           validators={['required']}
+//           errorMessages={['Este campo es requerido']}
+//         />
+//         <Button type="submit" variant="contained" color="primary">
+//           Iniciar sesión
+//         </Button>
+//       </FormControl>
+//     </ValidatorForm>
+//   );
+// }
 
-
-
-*/
+// export default FormLogin;

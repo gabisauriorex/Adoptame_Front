@@ -1,6 +1,14 @@
 
+.container {
+    display: 'flex';
+    flex-direction: 'row';
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 
+}
 .color_title{
     color: #0277bd;
 /*     color: #0f4d71; */
 }
+

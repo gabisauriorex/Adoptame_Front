@@ -61,7 +61,8 @@ const dispatch=useDispatch();
 
   return (
     <>
-     <Typography variant="h5" marginLeft={3} marginTop={2} className="color_title">FILTROS</Typography>
+{/*     <Box className="container"> */}
+        <Typography variant="h5" marginLeft={3} marginTop={2} className="color_title">FILTROS</Typography>
      <FormControl sx={{marginTop:1}}>
       <FormLabel id="demo-radio-buttons-group-label"><span className="color_title">Mascota</span></FormLabel>
       <RadioGroup
@@ -76,7 +77,7 @@ const dispatch=useDispatch();
        </RadioGroup>
      </FormControl>
 
-     <FormControl sx={{width:150}}>
+     <FormControl sx={{width:130}}>
         <InputLabel id="demo-simple-select-label">Raza</InputLabel>
         <Select
           labelId="demo-simple-select-label"
@@ -113,7 +114,7 @@ const dispatch=useDispatch();
      </FormControl>
 
         
-     <FormControl sx={{width:150}}>
+     <FormControl sx={{width:130}}>
         <InputLabel id="demo-simple-select-label">Tamaño</InputLabel>
         <Select
           labelId="demo-simple-select-label"
@@ -132,7 +133,7 @@ const dispatch=useDispatch();
           </Select>
       </FormControl>
         
-     <FormControl sx={{width:150 ,marginTop:1}}>
+     <FormControl sx={{width:130 ,marginTop:1}}>
         <InputLabel id="demo-simple-select-label">Color</InputLabel>
         <Select
           labelId="demo-simple-select-label"
@@ -151,6 +152,9 @@ const dispatch=useDispatch();
           }
         </Select>
       </FormControl> 
+
+{/*     </Box>
+    */}
      
     </>
      
