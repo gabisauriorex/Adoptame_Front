@@ -1,8 +1,4 @@
-
-
-
 import { styled } from '@mui/material/styles';
-
 import {Paper,Grid ,Box}from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -10,9 +6,7 @@ import Pets from '@mui/icons-material/Pets'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
 import {Link} from 'react-router-dom'
-
 import './CardPet.css'
-
 
 const Img = styled('img')({
   margin:'1px',
@@ -22,52 +16,45 @@ const Img = styled('img')({
   padding:'1px'
 });
 
-
-
-
-function CardPet({id,image,name,timewait,description }) 
+function CardPet({id,image,name,sexo,edad,description }) 
 {
-  const path=`/pets/:${id}`;
-     return (
- 
-            <Paper className='containerCardPet'
-                >
-
-                  <Grid >
-                  <Typography  variant="h6" component="div"  color="#0f4d71" /* sx={{backgroundColor:"#ffa733" ,borderRadius:5 ,margin:"3px"}} */>
-                      {name}       <FontAwesomeIcon icon={faPaw} bounce/> 
-                  </Typography>
-                 
-                 
+  const path=`/pets/${id}`; 
+     return ( 
+              <Paper className='containerCardPet'>
+                  <Grid>
+                      <Typography  variant="h6" component="div"  color="#0f4d71" /* sx={{backgroundColor:"#ffa733" ,borderRadius:5 ,margin:"3px"}} */>
+                          {name}       <FontAwesomeIcon icon={faPaw} bounce/> 
+                      </Typography>                                 
                   </Grid>
                   <Grid item xs={12} sm={4} md={4}>
-                  <Button component={Link} to={path} >
-                  <Img alt="complex" src={image} />
-                  </Button>
-                </Grid>
-                <Grid item xs={12} sm={3} md={4}  className='containerText' >
-                  <Box sx={{ marginLeft:5, display:'flex',flexDirection:'row' ,justifyContent:'center',alignItems:'center'}}>
-                  <Typography variant="subtitle2" gutterBottom>
-                    {timewait}
-                  </Typography>
-                  </Box>
-                </Grid>
-              </Paper>
-  
+                      <Button component={Link} to={path} >
+                      <Img alt="complex" src={image} />
+                      </Button>
+                  </Grid>
+                  <Grid item xs={12} className='containerText' >
+                      <Box sx={{width:'100%', display:'flex',flexDirection:'row' ,justifyContent:'space-around',alignItems:'center'}}>
+                      <Typography
+                          noWrap
+                          variant="subtitle2" 
+                          padding={1}                          
+                      >
+                          {edad}
+                      </Typography>
+                      <Typography
+                          variant="subtitle2"
+                          padding={1}
+                           >
+                          {sexo}
+                      </Typography>
+                      </Box>
+                  </Grid>
+              </Paper>  
   )
 }
-
 export default CardPet
 
 
-
-
-
 /* 
-
-
-
-
   <Paper
             key={id}
            sx={{
@@ -78,8 +65,7 @@ export default CardPet
             flexGrow: 1,
             borderRadius:1
            backgroundColor: (theme) =>
-          theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-         
+          theme.palette.mode === 'dark' ? '#1A2027' : '#fff',         
             }}
             >
              <Grid container spacing={5}> 
@@ -100,25 +86,9 @@ export default CardPet
                       <Typography variant="body2" color="text.secondary">
                         {description}
                       </Typography>
-                   </Grid> 
-                   
-                    </Grid>
-             
+                   </Grid>                    
+                    </Grid>             
                   </Grid>
                 </Grid> 
                </Paper>
-
-
-
-
-
-
 */
-
-
-
-
-
-
-
-
