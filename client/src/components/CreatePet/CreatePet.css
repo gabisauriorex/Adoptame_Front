@@ -1,35 +1,25 @@
-.error-message{
-    color: black;
-}
 
 
-.containerPrincipal{
-    height: 150vh;
-    margin-top:3rem;
-    
+
+.containerGral{
+    display: flex;
+        flex-direction: column;
+        /* border: 20px solid #000; */
+        margin-top: 10%;
+        justify-content: center;
+        align-items: center;
 }
+
 .containerForm{
-    display:flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid  #dc1e7c;
-    border-radius: 10px;
-    margin-top:5rem;
-    max-width: 500px;
-    max-height: 1200px;
-    padding: 1rem;
-    margin-left: 14rem;
-    margin-bottom: 2rem;
-   
- 
+ display: flex;
+            flex-direction: column;
+            width: 80%;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+                rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            /* border: 1px solid #000; */
 }
 
-.containerBoton{
-    display:flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-   /*  margin-left: 50rem; */
-}
+
+
