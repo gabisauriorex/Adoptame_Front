@@ -1,11 +1,9 @@
-
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPets } from "../../Redux/Actions/actions_pets";
 import CardPet from "../Card/CardPet";
  //import {pets} from '../../Datos.js' 
 import style from "./Pets.module.css";
-
 //===============
 import Paginate from "../Paginate/Paginate";
 import Box from '@mui/material/Box';
@@ -17,9 +15,7 @@ function Pets() {
 
   /* useEffect(() => {
     dispatch(getPets());
-  }, [dispatch]); */
-  
-  
+  }, [dispatch]);  
     return (
         <div>
          <Box sx={{ flexGrow: 1 ,margin:3 }}>
@@ -31,14 +27,14 @@ function Pets() {
              id={p.id}
               image={p.image}
               name={p.name}
-              timewait={p.timewait}
-               description={p.description}
+              edad={p.edad}
+              sexo={p.sexo}
+              description={p.description}
               />
           ) })}
           </Grid>
           </Grid>
         </Box>
-
         <Box container  sx={{flexGrow:1 ,marginTop:10}} >
         <Paginate   />     
         </Box>
@@ -47,14 +43,3 @@ function Pets() {
 }
 
 export default Pets;
-
-
-
-
-
-
-
-
-
-
-
