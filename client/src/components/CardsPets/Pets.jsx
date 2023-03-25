@@ -10,10 +10,10 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
 function Pets() {
-  const dispatch = useDispatch(); 
- const pets = useSelector((state) => state.pets);
+/*   const dispatch = useDispatch();  */
+ const pets = useSelector((state) => state.filtres_reducer.pets);
 
-  useEffect(() => {
+  /* useEffect(() => {
     dispatch(getPets());
   }, [dispatch]);  
     return (

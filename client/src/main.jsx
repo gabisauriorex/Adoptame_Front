@@ -5,7 +5,7 @@ import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import { store } from "./Redux/Store/store";
 import { Provider } from "react-redux";
-
+import { Auth0Provider } from "@auth0/auth0-react";
 import{styled ,createTheme, ThemeProvider}from '@mui/material/styles'
 
 const theme = createTheme({
@@ -20,9 +20,17 @@ const theme = createTheme({
   },
 });
 
+const {VITE_DOMAIN,VITE_CLIENT_ID}=import.meta.env;
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
+  <Auth0Provider
+    domain={VITE_DOMAIN}
+    clientId={VITE_CLIENT_ID}
+    authorizationParams={{
+      redirect_uri: window.location.origin
+    }}
+  >
     <React.StrictMode>
     <BrowserRouter>
     <ThemeProvider theme={theme}>
@@ -30,5 +38,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </ThemeProvider>
      </BrowserRouter>  
     </React.StrictMode>
+    </Auth0Provider>
   </Provider>,
 )

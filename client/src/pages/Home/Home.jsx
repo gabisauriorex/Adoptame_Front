@@ -22,7 +22,7 @@ export default function Home() {
   <Box /* sx={{ flexGrow: 1 }} */ sx={{ width: '100%'  }}  >
       <Grid /*  container spacing={0} */  container rowSpacing={1} columnSpacing={{ xs: 0, sm: 0, md: 0 }}>
         <Grid container  item xs={2.5} md={2.5} >
-         <Filtres/>
+         <Filtres/> 
         </Grid>
           <Grid item xs={9} sm={9} md={9}>
           <Pets/>
