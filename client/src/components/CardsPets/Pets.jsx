@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPets } from "../../Redux/Actions/actions_pets";
+import { getPets } from "../../Redux/Actions/actions_filter";
 import CardPet from "../Card/CardPet";
  //import {pets} from '../../Datos.js' 
 import style from "./Pets.module.css";
@@ -13,9 +13,9 @@ function Pets() {
 /*   const dispatch = useDispatch();  */
  const pets = useSelector((state) => state.filtres_reducer.pets);
 
-  /* useEffect(() => {
+/*   useEffect(() => {
     dispatch(getPets());
-  }, [dispatch]);  
+  }, [dispatch]);  */ 
     return (
         <div>
          <Box sx={{ flexGrow: 1 ,margin:3 }}>

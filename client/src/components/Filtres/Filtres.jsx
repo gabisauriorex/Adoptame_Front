@@ -132,8 +132,7 @@ const dispatch=useDispatch();
                   }
                 </Select>
               </FormControl>      
-    </>     
-    <>
+   
 {/*     <Box className="container"> */}
         <Typography variant="h5" marginLeft={3} marginTop={2} className="color_title">FILTROS</Typography>
      <FormControl sx={{marginTop:1}}>
