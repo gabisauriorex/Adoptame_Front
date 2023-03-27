@@ -2,18 +2,21 @@ import axios from "axios";
 
 //conexion entre front y back
 
-import { POST_PET_SUCCESS, POST_PET_ERROR, GET_DETAIL_PETS } from "../ActionsTypes/actions_types";
+import { FORM_SUCCESS, GET_DETAIL_PETS } from "../ActionsTypes/actions_types";
 
-export const postPet = (data) => {
-  return (dispatch) => {
-    axios.post('pets', data)
-      .then((response) => {
-        dispatch({ type: POST_PET_SUCCESS, payload: response.data });
+export const postPet = (formData) => {
+  return async function (dispatch){
+    axios.post("pets", formData)
+      .then(() =>{
+        dispatch({
+          type: FORM_SUCCESS,
+          payload: formData
+        })
       })
-      .catch((error) => {
-        dispatch({ type: POST_PET_ERROR, payload: error });
-      });
-  };
+      .catch((error) =>{
+        console.log(error)
+      })
+  }
 };
 
 export function getDetails(id) {

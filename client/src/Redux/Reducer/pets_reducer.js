@@ -1,9 +1,8 @@
-import { GET_DETAIL_PETS, POST_PET_ERROR, POST_PET_SUCCESS } from "../ActionsTypes/actions_types";
+import { GET_DETAIL_PETS, FORM_SUCCESS } from "../ActionsTypes/actions_types";
 
 const initialState = {
   detail: [],
   formData: [],
-  error: null,
 };
 
 function pets_reducer(state = initialState, action) {
@@ -13,18 +12,11 @@ function pets_reducer(state = initialState, action) {
         ...state,
         detail: action.payload,
       };
-
-      case POST_PET_SUCCESS:
-        return {
-          ...state,
-          pets: [...state.pets, action.payload],
-          error: null,
-        };
-      case POST_PET_ERROR:
-        return {
-          ...state,
-          error: action.payload,
-        };
+    case FORM_SUCCESS:
+      return {
+        ...state,
+        formData: action.payload,
+      };
 
     default:
       return state;

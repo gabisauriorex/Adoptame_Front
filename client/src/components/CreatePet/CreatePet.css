@@ -28,6 +28,11 @@
             /* border: 1px solid #000; */
 }
 
-
+.container1ros2{
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  justify-content: flex-end;
+}
 
 

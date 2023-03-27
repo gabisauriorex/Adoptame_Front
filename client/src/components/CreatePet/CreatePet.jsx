@@ -9,13 +9,14 @@ import {
   FormControlLabel,
   Typography,
   Box,
+  Input,
   FormLabel,
   RadioGroup,
   Radio,
 } from "@mui/material";
-import React, { useState } from "react";
-
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { postPet } from "../../Redux/Actions/actions_pets";
 import { razas } from "../../Redux/Actions/actions_filter";
@@ -29,22 +30,27 @@ function CreatePet() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  //vacuna
+  const [vacunas, setVacunas] = useState([]);
+  //disease
+  const [enfer, setEnfer] = useState([]);
+  //location
+  const [lugar, setLugar] = useState([]);
   const [input, setInput] = useState({
     name: "",
     image: "",
     description: "",
-    timewait: "",
     breed: "",
     animal: "",
     height: "",
     color: "",
     identified: "",
     sex: "",
+    weight: "",
     age: "",
-    /* vacunas:"todas",
-    edad:"4 años",
-    especie:"perro" */
+    vaccines: "",
+    disease: "",
+    location: "",
   });
 
   //================handlerChange======================
@@ -57,7 +63,10 @@ function CreatePet() {
   };
   const handleImage = (e) => {
     console.log(e.target.value);
-    setInput([...input.image, e.target.value]);
+    setInput({
+         ...input,
+     [e.target.name]: e.target.value
+    }) 
   };
 
   const handleSelectBreed = (e) => {
@@ -71,14 +80,14 @@ function CreatePet() {
     console.log(e.target.value);
     setInput({
       ...input,
-      height: [...input.height, e.target.value],
+      height: e.target.value,
     });
   };
   const handlerSelectColor = (e) => {
     console.log(e.target.value);
     setInput({
       ...input,
-      color: [...input.color, e.target.value],
+      color: e.target.value,
     });
   };
 
@@ -104,12 +113,6 @@ function CreatePet() {
     dispatch(postPet(input));
     navigate("/");
   };
-  /*   const inputImgStyle = {
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '100%',
-        } */
 
   //styledComponents----------------
   const ageOptions = [
@@ -118,6 +121,30 @@ function CreatePet() {
     { value: "mayor a 5 años", label: "Más de 5 años" },
     { value: "mayor 10 años", label: "Más de 10 años" },
   ];
+  // VACUNAS
+  useEffect(() => {
+    async function getVacunas() {
+      const res = await axios.get("/vaccines");
+      setVacunas(res.data);
+    }
+    getVacunas();
+  }, []);
+  // DISEASES
+  useEffect(() => {
+    async function getDisease() {
+      const res = await axios.get("/diseases");
+      setEnfer(res.data);
+    }
+    getDisease();
+  }, []);
+  // LOCATION
+  useEffect(() => {
+    async function getLocation() {
+      const res = await axios.get("/locations");
+      setLugar(res.data);
+    }
+    getLocation();
+  }, []);
 
   return (
     <div className="containerGral">
@@ -126,8 +153,8 @@ function CreatePet() {
           Registro de Mascota
         </Typography>
 
-        {/* identified */}
-        <Box>
+          {/* identified */}
+            <Box>
           <FormControl
             margin="normal"
             sx={{ display: "inline-flex", justifyContent: "flex-start" }}
@@ -139,7 +166,6 @@ function CreatePet() {
               id="demo-radio-buttons-group-label"
               value={input.identified}
               aria-labelledby="demo-radio-buttons-group-label"
-              // defaultValue="todos"
               name="radio-buttons-group"
               onChange={handleSelectIdentified}
               row
@@ -159,17 +185,17 @@ function CreatePet() {
             </RadioGroup>
           </FormControl>
         </Box>
-
-        <Box sx={{ display: "flex", width: "100%" }}>
           {/* NOMBRE */}
+          <Box>
           <FormControl
             margin="normal"
             sx={{
               display: "flex",
-              padding: "10px",
               flexWrap: "wrap",
               width: "50%",
               minHeight: "100px",
+              padding: "10px",
+              
             }}
           >
             <TextField
@@ -183,6 +209,34 @@ function CreatePet() {
             />
             <FormHelperText id="name-helper">
               Ingrese el nombre del animal
+              {/*  {errors.name && <span>Este campo es requerido</span>} */}
+            </FormHelperText>
+          </FormControl>
+          </Box>
+
+        <Box sx={{ display: "flex", width: "100%" }}>
+          {/* peso */}
+          <FormControl
+            margin="normal"
+            sx={{
+              display: "flex",
+              padding: "10px",
+              flexWrap: "wrap",
+              width: "50%",
+              minHeight: "100px",
+            }}
+          >
+            <TextField
+              id="outlined-basic"
+              label="Peso"
+              variant="outlined"
+              type="number"
+              name="weight"
+              value={input.weight}
+              onChange={(e) => handleChange(e)}
+            />
+            <FormHelperText id="name-helper">
+              Ingrese el peso
               {/*  {errors.name && <span>Este campo es requerido</span>} */}
             </FormHelperText>
           </FormControl>
@@ -281,7 +335,7 @@ function CreatePet() {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              label="tamaño"
+              label="height"
               onChange={(e) => handleSelectSize(e)}
             >
               {["Grande", "Mediano", "Chico"].map((t) => {
@@ -319,6 +373,86 @@ function CreatePet() {
             </FormHelperText>
           </FormControl>
         </Box>
+        
+          
+                {/* VACUNAS*/}
+          <Box sx={{ display: "flex", width: "100%" }}>
+          <FormControl
+            margin="normal"
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              width: "30%",
+              height: "auto",
+              marginRight: "10px",
+            }}
+          >
+            <InputLabel>Vacunas</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select-label"
+              name="vaccines"
+              value={input.vaccines}
+              label="Vacunas"
+              onChange={(e) => setInput({ ...input, vaccines: e.target.value })}
+            >
+              {vacunas.map((vacuna) => {
+                return <MenuItem value={vacuna.name}>{vacuna.name}</MenuItem>;
+              })}
+            </Select>
+          </FormControl>
+          </Box>
+          {/* DISEASES*/}
+          <Box sx={{ display: "flex", width: "100%" }}>
+          <FormControl
+            margin="normal"
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              width: "50%",
+              marginRight: "10px",
+            }}
+          >
+            <InputLabel>Enfermedades</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select-label"
+              name="disease"
+              value={input.disease}
+              label="Vacunas"
+              onChange={(e) => setInput({ ...input, disease: e.target.value })}
+            >
+              {enfer.map((e) => {
+                return <MenuItem value={e.name}>{e.name}</MenuItem>;
+              })}
+            </Select>
+          </FormControl>
+          
+          {/* LOCATION*/}
+          <FormControl
+            margin="normal"
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              width: "50%",
+              marginRight: "10px",
+            }}
+          >
+            <InputLabel>Ciudad</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select-label"
+              name="location"
+              value={input.location}
+              label="Ciudad"
+              onChange={(e) => setInput({ ...input, location: e.target.value })}
+            >
+              {lugar.map((e) => {
+                return <MenuItem value={e.province}>{e.province}</MenuItem>;
+              })}
+            </Select>
+          </FormControl>
+          </Box>
 
         {/* EDAD */}
         <Box sx={{ display: "flex", width: "100%" }}>
