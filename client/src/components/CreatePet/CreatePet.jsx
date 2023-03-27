@@ -40,8 +40,13 @@ function CreatePet() {
     animal: "",
     height: "",
     color: "",
+<<<<<<< Updated upstream
     identified: true,
     sex: "Male",
+=======
+    identified: "",
+    sex: "",
+>>>>>>> Stashed changes
     age: "",
     /* vacunas:"todas",
     edad:"4 años",
@@ -61,11 +66,19 @@ function CreatePet() {
     setInput([...input.image, e.target.value]);
   };
 
+<<<<<<< Updated upstream
   const handleSelectBreed = (event) => {
     console.log(event.target.value);
     setInput({
       ...input,
       breed: [...input.breed, event.target.value],
+=======
+  const handleSelectBreed = (e) => {
+    console.log(e.target.value);
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+>>>>>>> Stashed changes
     });
   };
   const handleSelectSize = (e) => {
@@ -83,12 +96,23 @@ function CreatePet() {
     });
   };
 
+<<<<<<< Updated upstream
   const handleSelectIdentified = (e) => {
     console.log(e.target.value);
     setInput({
       ...input,
       identified: e.target.value
     })
+=======
+  const handleSelectIdentified = (event) => {
+    console.log(event.target.value)
+    const value = event.target.value;
+    const identified = value === "encontra";
+    setInput({
+      ...input,
+      identified,
+    });
+>>>>>>> Stashed changes
   };
   const handleSelectGender = (e) => {
             console.log(e.target.value)
@@ -132,6 +156,10 @@ function CreatePet() {
                 <span className="color_title">Mascota</span>
               </FormLabel>
               <RadioGroup 
+<<<<<<< Updated upstream
+=======
+                id="demo-radio-buttons-group-label"
+>>>>>>> Stashed changes
                 value={input.identified}
                 aria-labelledby="demo-radio-buttons-group-label"
                 // defaultValue="todos"
@@ -143,11 +171,19 @@ function CreatePet() {
                   value="encontra"
                   control={<Radio />}
                   label="Encontrado"
+<<<<<<< Updated upstream
+=======
+                  checked={input.identified === true}
+>>>>>>> Stashed changes
                 />
                 <FormControlLabel
                   value="adopta"
                   control={<Radio />}
                   label="Para adoptar"
+<<<<<<< Updated upstream
+=======
+                  checked={input.identified === false}
+>>>>>>> Stashed changes
                 />
               </RadioGroup>
             </FormControl>
@@ -186,8 +222,11 @@ function CreatePet() {
                   name="image"
                   value={input.image}
                   onChange={handleImage}
+<<<<<<< Updated upstream
                   /* disabled */
                   disabled
+=======
+>>>>>>> Stashed changes
                 />
                 <FormHelperText id="image-helper">
                   Ingrese una imagen
@@ -218,6 +257,11 @@ function CreatePet() {
           <FormControl sx={{ display: "flex", flexWrap: "wrap", width:"50%", marginRight:"10px"  }} margin="normal">
             <InputLabel>Raza</InputLabel>
             <Select
+<<<<<<< Updated upstream
+=======
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+>>>>>>> Stashed changes
               name="breed"
               value={input.breed}
               label="Raza"
@@ -337,6 +381,28 @@ function CreatePet() {
     </Box>
   </Box>
         
+<<<<<<< Updated upstream
+=======
+<Box>
+{/* DESCRIPCION */}
+<FormControl margin="normal" sx={{ display: "flex", flexWrap: "wrap", width:"100%", minHeight: "auto", }}>
+                <TextField
+                  id="outlined-basic"
+                  label="Descripcion"
+                  variant="outlined"
+                  type="text"
+                  name="description"
+                  value={input.description}
+                  onChange={(e) => handleChange(e)}
+                />
+                <FormHelperText id="name-helper">
+                  Ingrese una breve descripcion
+                  {/*  {errors.name && <span>Este campo es requerido</span>} */}
+                </FormHelperText>
+              </FormControl>
+</Box>
+        
+>>>>>>> Stashed changes
 
         <FormControl className="containerBoton">
           <Button variant="contained" type="submit" margin="normal">
@@ -350,6 +416,7 @@ function CreatePet() {
 
 export default CreatePet;
 
+<<<<<<< Updated upstream
 /* 
  <FormControl margin="normal">
           <InputLabel>
@@ -590,3 +657,5 @@ export default CreatePet;
 
 
 */
+=======
+>>>>>>> Stashed changes

@@ -6,10 +6,10 @@
   align-items: center;
 }
 .containerGral{
-    display: flex;
+        display: flex;
         flex-direction: column;
         /* border: 20px solid #000; */
-        margin-top: 10%;
+        margin-top: 5em;
         justify-content: center;
         align-items: center;
 }
