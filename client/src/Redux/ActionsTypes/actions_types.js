@@ -1,7 +1,8 @@
 export const GET_PETS = "GET_PETS";
 export const GET_DETAIL_PETS = 'GET_DETAIL_PETS';
-export const POST_SUCCESS = 'POST_SUCCESS';
 
+//form
+export const FORM_SUCCESS = 'FORM_SUCCESS';
 
 //filtros
 export const FILTER_BY_BREED = 'FILTER_BY_BREED';
