@@ -70,7 +70,7 @@ function CreatePet() {
     formdata.append = ('image', e.target.files[0]) 
     formdata.append("upload_preset", "gamepalace");
     formdata.append("cloud_name", "ddjreipc4");
-    fetch("https://api.cloudinary.com/v1_1/ddjreipc4/image/upload", {
+    fetch("https://res.cloudinary.com/ddjreipc4/image/upload/", {
       method: "post",
       body: formdata,
     })
