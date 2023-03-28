@@ -23,7 +23,7 @@ function CardPet({id,image,name,sexo,edad,description })
               <Paper className='containerCardPet'>
                   <Grid>
                       <Typography  variant="h6" component="div"  color="#0f4d71" /* sx={{backgroundColor:"#ffa733" ,borderRadius:5 ,margin:"3px"}} */>
-                          {name}       <FontAwesomeIcon icon={faPaw} bounce/> 
+                          {name}  <FontAwesomeIcon icon={faPaw} bounce/> 
                       </Typography>                                 
                   </Grid>
                   <Grid item xs={12} sm={4} md={4}>

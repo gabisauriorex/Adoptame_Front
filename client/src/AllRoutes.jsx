@@ -7,7 +7,7 @@ import Detail from "./components/Detail/Detail";
 import Dona from './components/Dona/Dona'
 import NavBar  from './common/NavBar/NavBar'
 import About from "./pages/About/About";
-import Footer from './components/Footer/Footer'
+import Profile from "./common/Account/Profile";
 import Loading from "./components/Loading/Loading";
 import CreatePet from "./components/CreatePet/CreatePet";
 
@@ -19,16 +19,17 @@ function AllRoutes() {
         <NavBar/>  
           <Routes>
           <Route exact path="/"  element={<Landing/>} /> 
-          <Route exact path="/Adopta" element={<Adopta/>} />
+          <Route exact path="/adopta" element={<Adopta/>} />
           <Route exact path="/pets/:id" element={<Detail/>} />
-          <Route exact path="/Home" element={<Home/>} />
-          <Route exact path="/Dona" element={<Dona/>} />
-         <Route exact path="/About" element={<About/>} />
-         <Route exact path="/CreatePet" element={<CreatePet/>} />
+          <Route exact path="/home" element={<Home/>} />
+          <Route exact path="/dona" element={<Dona/>} />
+         <Route exact path="/about" element={<About/>} />
+         <Route exact path="/createPet" element={<CreatePet/>} />
+         <Route exact path="/profile" element={<Profile/>} />
         </Routes>
 
  
-    {/*   <Footer/>   */}
+
      </div>
   );
 }
