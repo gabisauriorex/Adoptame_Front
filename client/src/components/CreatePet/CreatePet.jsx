@@ -14,6 +14,9 @@ import {
   RadioGroup,
   Radio,
 } from "@mui/material";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -24,12 +27,25 @@ import { color } from "../../Redux/Actions/actions_filter";
 import "./CreatePet.css";
 
 //react-hook-form
+const schema = yup.object().shape({
+  name: yup.string().required("El nombre no puede estar vacio"),
+  animal: yup.string().required("Es obligatorio seleccionar un tipo de animal"),
+  breed: yup.string().required("Seleccione una raza de animal"),
+  height: yup.string().required("Seleccione un tamaño aproximado"),
+  weight: yup.string().required("El peso es obligatorio"),
+  age: yup.string().required("Seleccione la edad"),
+  color: yup.string().required("Seleccione el color"),
+  identified: yup.string().required("Seleccione la identificacion del animal")
+
+
+})
 
 function CreatePet() {
-  //const { register, handleSubmit, watch, formState: { errors } } = useForm({ mode: "onTouched" });
-
+  
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({ mode: "onTouched", resolver: yupResolver(schema) });
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   //vacuna
   const [vacunas, setVacunas] = useState([]);
   //disease
@@ -110,9 +126,15 @@ function CreatePet() {
   const enviarDatos = (e) => {
     console.log(input);
     e.preventDefault();
+    const validationErrors = validate(e); // Esta función deberías definirla según tus necesidades
+    if (Object.keys(validationErrors).length > 0) {
+      setFormErrors(validationErrors);
+      return; // Evita que se ejecute el envío del formulario si hay errores
+    }
     dispatch(postPet(input));
     navigate("/");
   };
+  
 
   //styledComponents----------------
   const ageOptions = [
@@ -160,9 +182,11 @@ function CreatePet() {
             sx={{ display: "inline-flex", justifyContent: "flex-start" }}
           >
             <FormLabel id="demo-radio-buttons-group-label">
-              <span className="color_title">Mascota</span>
+              <span>Mascota</span>
             </FormLabel>
             <RadioGroup
+              {...register("identified")}
+              error={!!errors.identified} helperText={errors?.identified?.message}
               id="demo-radio-buttons-group-label"
               value={input.identified}
               aria-labelledby="demo-radio-buttons-group-label"
@@ -183,6 +207,7 @@ function CreatePet() {
                 checked={input.identified === false}
               />
             </RadioGroup>
+            {errors.identified && <Typography variant="caption" color="error">{errors.identified.message}</Typography>}
           </FormControl>
         </Box>
           {/* NOMBRE */}
@@ -199,6 +224,8 @@ function CreatePet() {
             }}
           >
             <TextField
+              {...register("name")}
+              error={!!errors.name} helperText={errors?.name?.message}
               id="outlined-basic"
               label="Nombre de Mascota"
               variant="outlined"
@@ -207,9 +234,9 @@ function CreatePet() {
               value={input.name}
               onChange={(e) => handleChange(e)}
             />
+            {/* {errors.name && <Typography variant="caption" color="error">{errors.name.message}</Typography>} */}
             <FormHelperText id="name-helper">
               Ingrese el nombre del animal
-              {/*  {errors.name && <span>Este campo es requerido</span>} */}
             </FormHelperText>
           </FormControl>
           </Box>
@@ -227,6 +254,8 @@ function CreatePet() {
             }}
           >
             <TextField
+              {...register("weight")}
+              error={!!errors.weight} helperText={errors?.weight?.message}
               id="outlined-basic"
               label="Peso"
               variant="outlined"
@@ -235,9 +264,9 @@ function CreatePet() {
               value={input.weight}
               onChange={(e) => handleChange(e)}
             />
-            <FormHelperText id="name-helper">
+            {/* {errors.weight && <Typography variant="caption" color="error">{errors.weight.message}</Typography>} */}
+            <FormHelperText id="weight-helper">
               Ingrese el peso
-              {/*  {errors.name && <span>Este campo es requerido</span>} */}
             </FormHelperText>
           </FormControl>
 
@@ -279,7 +308,10 @@ function CreatePet() {
           >
             <InputLabel>Tipo</InputLabel>
             <Select
+              {...register("animal")}
+              error={!!errors.animal} helperText={errors?.animal?.message}
               name="animal"
+              aria-describedby="animal-helper"
               value={input.animal}
               label="Animal"
               onChange={handleChange}
@@ -288,6 +320,7 @@ function CreatePet() {
                 return <MenuItem value={m}>{m}</MenuItem>;
               })}
             </Select>
+            {errors.animal && <Typography variant="caption" color="error">{errors.animal.message}</Typography>}
             <FormHelperText id="animal-helper">
               Seleccione el tipo de animal
             </FormHelperText>
@@ -305,6 +338,8 @@ function CreatePet() {
           >
             <InputLabel>Raza</InputLabel>
             <Select
+              {...register("breed")}
+              error={!!errors.breed} helperText={errors?.breed?.message}
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               name="breed"
@@ -316,7 +351,8 @@ function CreatePet() {
                 return <MenuItem value={name}>{name}</MenuItem>;
               })}
             </Select>
-            <FormHelperText id="animal-helper">
+            {errors.breed && <Typography variant="caption" color="error">{errors.breed.message}</Typography>}
+            <FormHelperText id="breed-helper">
               Seleccione la raza del animal
             </FormHelperText>
           </FormControl>
@@ -333,6 +369,8 @@ function CreatePet() {
           >
             <InputLabel id="demo-simple-select-label">Tamaño</InputLabel>
             <Select
+              {...register("height")}
+              error={!!errors.height} helperText={errors?.height?.message}
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               label="height"
@@ -342,6 +380,7 @@ function CreatePet() {
                 return <MenuItem value={t}>{t}</MenuItem>;
               })}
             </Select>
+            {errors.height && <Typography variant="caption" color="error">{errors.height.message}</Typography>}
             <FormHelperText id="animal-helper">
               Seleccione el tamaño del animal
             </FormHelperText>
@@ -359,6 +398,8 @@ function CreatePet() {
           >
             <InputLabel id="demo-simple-select-label">Color</InputLabel>
             <Select
+              {...register("color")}
+              error={!!errors.color} helperText={errors?.color?.message}
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               label="color"
@@ -368,6 +409,7 @@ function CreatePet() {
                 return <MenuItem value={c}>{c}</MenuItem>;
               })}
             </Select>
+            {errors.color && <Typography variant="caption" color="error">{errors.color.message}</Typography>}
             <FormHelperText id="animal-helper">
               Seleccione el color del animal
             </FormHelperText>
@@ -468,6 +510,8 @@ function CreatePet() {
           >
             <InputLabel id="age-select-label">Edad de la mascota</InputLabel>
             <Select
+              {...register("age")}age
+              error={!!errors.age} helperText={errors?.age?.message}
               labelId="age-select-label"
               id="age-select"
               value={input.age}
@@ -480,6 +524,7 @@ function CreatePet() {
                 </MenuItem>
               ))}
             </Select>
+            {errors.age && <Typography variant="caption" color="error">{errors.age.message}</Typography>}
             <FormHelperText id="age-helper">Ingrese la edad</FormHelperText>
           </FormControl>
 
@@ -557,7 +602,7 @@ function CreatePet() {
             </FormHelperText>
           </FormControl>
         </Box>
-
+        
         <FormControl className="containerBoton">
           <Button variant="contained" type="submit" margin="normal">
             Enviar
