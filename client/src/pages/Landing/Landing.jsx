@@ -2,21 +2,20 @@
 import React from 'react'
 import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom';
-
 import './Landing.css'
 
 function Landing() {
   return (
-    <div>
-      <h1 className=''>Landing</h1> 
-
+    <div className='land'>
        <Link to="/Home">
-       <Button variant="contained">ir a home </Button>
+       <Button variant="contained">Adopta</Button>
        </Link>
        <Link to="/createPet">
-      <Button variant="contained">Crear animal</Button>
+      <Button variant="contained">Registrar animal</Button>
        </Link>
-
+       <Link to="/Dona">
+      <Button variant="contained">Ayudanos</Button>
+       </Link>
     </div>
   )
 }
