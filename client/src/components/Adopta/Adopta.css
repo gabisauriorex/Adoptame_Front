@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+* {
+	padding: 0px;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: #ffffff;
+	font-family: 'Open Sans', sans-serif;
+	min-height: 100vh;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	margin-top: -5%;
+	justify-content: center;
+	align-items: center;
+}
+
+.formulario {
+	border-radius: 8px; 
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+	min-width: 600px;
+	margin-top: 120px;
+	background: #f7f4f4;
+	padding: 20px;
+}
+
+.formulario > div {
+	margin-bottom: 20px;
+	display: grid;
+  	place-content: center;
+}
+
+.formulario label {
+	display: block;
+	font-weight: 600;
+	font-size: 14px;
+	margin-bottom: 5px;
+	color: #000000;
+}
+
+.formulario input,
+.formulario textarea {
+	font-family: 'Open Sans', sans-serif;
+	width: 100%;
+	border-radius: 5px;
+	border: 2px solid #e2e2e2;
+	font-size: 18px;
+	padding: 10px;
+	margin-bottom: 5px;
+	color: #000000;
+}
+
+.formulario input:focus {
+	outline: none;
+	border: 2px solid #000000;
+}
+.formulario .stiloDmerga{
+	background-color: #ffffff;
+	width: 100%;
+	margin: 0 auto;
+	max-width: 236px;
+}
+.formulario .error {
+	color: #e92b2d;
+	font-weight: 600;
+	font-size: 12px;
+}
+
+.formulario button[type="submit"] {
+  	place-content: center;
+	background: #01579b;
+	font-weight: 600;
+	font-family: 'Open Sans', sans-serif;
+	border: none;
+	cursor: pointer;
+	width: 25%;
+	padding: 10px;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 16px;
+	transition: .3s ease all;
+}
+
+.formulario button[type="submit"]:hover {
+	background: #0051ff;
+}
+
+.formulario .exito {
+	text-align: center;
+	font-size: 14px;
+	padding-top: 20px;
+	color: #02a802;
+}
+
+.formulario input[type="radio"] {
+	width: auto;
+}
+::placeholder{
+	color: #a2a2a2;
+}

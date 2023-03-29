@@ -68,8 +68,8 @@ export default function NavBar() {
 
 const arrayNav=[
 {
-  name:  'Adopta',
-   path: '/Adopta',
+  name:  'Adopcion',
+   path: '/Home',
    icon: <Diversity1/>
 }
   ,
@@ -131,7 +131,7 @@ const arrayNav2=[
               sx={{ display: { xs: 'none', sm: 'block', textDecoration: "none", color: "black" } }}
               className={theme.typography}
               component={Link}
-              to="/Home"
+              to="/"
             >
               Adoptame
 

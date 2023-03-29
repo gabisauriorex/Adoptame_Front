@@ -64,10 +64,12 @@ function CreatePet() {
     sex: "",
     weight: "",
     age: "",
-    vaccines: "",
+    vaccine: "",
     disease: "",
     location: "",
   });
+
+
 
   //================handlerChange======================
   const handleChange = (e) => {
@@ -77,12 +79,29 @@ function CreatePet() {
       [e.target.name]: e.target.value,
     });
   };
+
   const handleImage = (e) => {
-    console.log(e.target.value);
-    setInput({
-         ...input,
-     [e.target.name]: e.target.value
-    }) 
+    console.log(e.target.files[0]);
+    const formdata = new FormData();
+    formdata.append = ('image', e.target.files[0]) 
+    formdata.append("upload_preset", "gamepalace");
+    formdata.append("cloud_name", "ddjreipc4");
+    fetch("https://res.cloudinary.com/ddjreipc4/image/upload/", {
+      method: "post",
+      body: formdata,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setInput({
+          ...input,
+          imageurl: data.url,
+        });
+        setMiniImage(data.url);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleSelectBreed = (e) => {
@@ -124,7 +143,7 @@ function CreatePet() {
     });
   };
   const enviarDatos = (e) => {
-    console.log(input);
+    //console.log(input);
     e.preventDefault();
     const validationErrors = validate(e); // Esta función deberías definirla según tus necesidades
     if (Object.keys(validationErrors).length > 0) {
@@ -175,8 +194,8 @@ function CreatePet() {
           Registro de Mascota
         </Typography>
 
-          {/* identified */}
-            <Box>
+        {/* identified */}
+        <Box>
           <FormControl
             margin="normal"
             sx={{ display: "inline-flex", justifyContent: "flex-start" }}
@@ -210,8 +229,8 @@ function CreatePet() {
             {errors.identified && <Typography variant="caption" color="error">{errors.identified.message}</Typography>}
           </FormControl>
         </Box>
-          {/* NOMBRE */}
-          <Box>
+        {/* NOMBRE */}
+        <Box>
           <FormControl
             margin="normal"
             sx={{
@@ -220,7 +239,6 @@ function CreatePet() {
               width: "50%",
               minHeight: "100px",
               padding: "10px",
-              
             }}
           >
             <TextField
@@ -239,7 +257,7 @@ function CreatePet() {
               Ingrese el nombre del animal
             </FormHelperText>
           </FormControl>
-          </Box>
+        </Box>
 
         <Box sx={{ display: "flex", width: "100%" }}>
           {/* peso */}
@@ -280,13 +298,13 @@ function CreatePet() {
               minHeight: "100px",
               padding: "10px",
             }}
-          >
+          > 
             <TextField
               id="image"
               aria-describedby="image-helper"
               type="file"
               name="image"
-              value={input.image}
+              //value={input.image}
               onChange={handleImage}
             />
             <FormHelperText id="image-helper">
@@ -374,7 +392,9 @@ function CreatePet() {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               label="height"
-              onChange={(e) => handleSelectSize(e)}
+              name="height"
+              value={input.height}
+              onChange={(e) => handleChange(e)}
             >
               {["Grande", "Mediano", "Chico"].map((t) => {
                 return <MenuItem value={t}>{t}</MenuItem>;
@@ -415,10 +435,9 @@ function CreatePet() {
             </FormHelperText>
           </FormControl>
         </Box>
-        
-          
-                {/* VACUNAS*/}
-          <Box sx={{ display: "flex", width: "100%" }}>
+
+        {/* VACUNAS*/}
+        <Box sx={{ display: "flex", width: "100%" }}>
           <FormControl
             margin="normal"
             sx={{
@@ -433,19 +452,19 @@ function CreatePet() {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select-label"
-              name="vaccines"
-              value={input.vaccines}
+              name="vaccine"
+              value={input.vaccine}
               label="Vacunas"
-              onChange={(e) => setInput({ ...input, vaccines: e.target.value })}
+              onChange={(e) => setInput({ ...input, vaccine: e.target.value })}
             >
               {vacunas.map((vacuna) => {
-                return <MenuItem value={vacuna.name}>{vacuna.name}</MenuItem>;
+                return <MenuItem value={vacuna.id}>{vacuna.name}</MenuItem>;
               })}
             </Select>
           </FormControl>
-          </Box>
-          {/* DISEASES*/}
-          <Box sx={{ display: "flex", width: "100%" }}>
+        </Box>
+        {/* DISEASES*/}
+        <Box sx={{ display: "flex", width: "100%" }}>
           <FormControl
             margin="normal"
             sx={{
@@ -465,11 +484,11 @@ function CreatePet() {
               onChange={(e) => setInput({ ...input, disease: e.target.value })}
             >
               {enfer.map((e) => {
-                return <MenuItem value={e.name}>{e.name}</MenuItem>;
+                return <MenuItem value={e.id}>{e.name}</MenuItem>;
               })}
             </Select>
           </FormControl>
-          
+
           {/* LOCATION*/}
           <FormControl
             margin="normal"
@@ -490,11 +509,11 @@ function CreatePet() {
               onChange={(e) => setInput({ ...input, location: e.target.value })}
             >
               {lugar.map((e) => {
-                return <MenuItem value={e.province}>{e.province}</MenuItem>;
+                return <MenuItem value={e.id}>{e.province}</MenuItem>;
               })}
             </Select>
           </FormControl>
-          </Box>
+        </Box>
 
         {/* EDAD */}
         <Box sx={{ display: "flex", width: "100%" }}>
