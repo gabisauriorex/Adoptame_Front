@@ -12,11 +12,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
-import {ListItemButton,ListItemIcon,ListItemText,Divider,IconButton,Button} from '@mui/material';
+import {ListItemButton,ListItemIcon,ListItemText,Divider,IconButton,Button, Container} from '@mui/material';
 import patita from '../../Images/patita.ico'
 //=======================
 import SearchBar from '../SearchBar/SearchBar';
-import Account from '../Account/Account';
+import Login from '../Account/Login';
 import {Link} from "react-router-dom";
 import './NavBar.css'
  
@@ -112,39 +112,49 @@ const arrayNav2=[
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
     <AppBar position="fixed" sx={{backgroundColor:'#fafafa' ,color:"Black" }} open={open} >
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            onClick={handleDrawerOpen}
-            sx={{ mr: 1, ...(open && { display: 'none' }) }}
-          >
-          <MenuIcon sx={{color:'#01579b'}} />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-          /*   component="div" */
-            sx={{ display: { xs: 'none', sm: 'block' ,textDecoration:"none" , color:"black" } }}
-            className={theme.typography}
-            component={Link}
-            to="/Home"
-          >
-            Adoptame  
-         
-          <img src={patita} width="30px" height="30px" className='margenIzquierdo' />
+  {/*    <Container maxWidth="xl" sx={{marginLeft:0 ,marginRight:0}} > */}
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={handleDrawerOpen}
+              sx={{ mr: 1, ...(open && { display: 'none' }) }}
+            >
+              <MenuIcon sx={{ color: '#01579b' }} />
+            </IconButton>
+            <Typography
+              variant="h6"
+              noWrap
+              /*   component="div" */
+              sx={{ display: { xs: 'none', sm: 'block', textDecoration: "none", color: "black" } }}
+              className={theme.typography}
+              component={Link}
+              to="/Home"
+            >
+              Adoptame
 
-          </Typography>
+              <img src={patita} width="30px" height="30px" className='margenIzquierdo' />
 
-          <Box sx={{flexGrow:1 }}>
-           <SearchBar/>   
-         </Box>
-    
-          <Account/>   
-        
-        </Toolbar>
+            </Typography>
+
+            <Box sx={{ flexGrow: 1 }}>
+              <SearchBar />
+            </Box>
+
+            {/*   <Account/>  */}
+
+           {/*  <Button variant='outlined' size="small" color="primary">Login</Button> */}
+
+          <Login/>
+
+
+
+
+            {/* fin de account */}
+          </Toolbar>
+    {/*  </Container> */}
       </AppBar>
       <Drawer
         sx={{

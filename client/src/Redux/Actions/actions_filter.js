@@ -7,6 +7,28 @@ import {
   FILTER_BY_IDENT,
 } from "../ActionsTypes/actions_types";
 
+/* import {Notify} from '../../components/Notificacion/Notify'
+import { useAuth0 ,withAuthenticationRequired} from "@auth0/auth0-react";
+
+
+
+  const { isAuthenticated ,
+     getAccessTokenSilently
+
+  } = useAuth0();
+
+
+    if(isAuthenticated)
+    {
+         const token = await getAccessTokenSilently();
+    } 
+    else{
+        Notify('warning','Su usuario no esta autentificado debe loguearse','botton-end',3000 )
+    }
+   
+ */
+
+
 //===============ARRAY DE RAZAS==============
 export const razas = [
   "todos",
@@ -123,8 +145,9 @@ export const filterByIdent = (payload) => {
 export const getPets = () => {
   return async function (dispatch) {
     try {
-      let response = await axios.get("pets");
-      console.log(response.data);
+      let response = await axios.get("pets"
+      );
+    
       dispatch({
         type: GET_PETS,
         payload: response.data,
