@@ -3,21 +3,21 @@ import axios from "axios";
 
 //conexion entre front y back
 
-import { POST_SUCCESS, GET_DETAIL_PETS } from "../ActionsTypes/actions_types";
+import { FORM_SUCCESS, GET_DETAIL_PETS } from "../ActionsTypes/actions_types";
 
-export const postPet = (payload) => {
-  return async (dispatch) => {
-    // console.log(payload)
-    try {
-      await axios.post("pets", payload);
-      dispatch({
-        type: POST_SUCCESS,
-        //payload: response.data,
-      });
-    } catch (error) {
-      console.log({ message: error.message });
-    }
-  };
+export const postPet = (formData) => {
+  return async function (dispatch){
+    axios.post("pets", formData)
+      .then(() =>{
+        dispatch({
+          type: FORM_SUCCESS,
+          payload: formData
+        })
+      })
+      .catch((error) =>{
+        console.log(error)
+      })
+  }
 };
 
 export function getDetails(id) {
