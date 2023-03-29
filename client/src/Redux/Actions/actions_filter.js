@@ -7,73 +7,10 @@ import {
   FILTER_BY_IDENT,
 } from "../ActionsTypes/actions_types";
 
-/* import {Notify} from '../../components/Notificacion/Notify'
-import { useAuth0 ,withAuthenticationRequired} from "@auth0/auth0-react";
+import axios from 'axios';
 
+import { getToken } from "../../common/Account/Token";
 
-
-  const { isAuthenticated ,
-     getAccessTokenSilently
-
-  } = useAuth0();
-
-
-    if(isAuthenticated)
-    {
-         const token = await getAccessTokenSilently();
-    } 
-    else{
-        Notify('warning','Su usuario no esta autentificado debe loguearse','botton-end',3000 )
-    }
-   
- */
-
-
-//===============ARRAY DE RAZAS==============
-export const razas = [
-  "todos",
-  "Labrador",
-  "Bulldog",
-  "Boxer",
-  "Caniche",
-  "Pomerania",
-  "Pug",
-  "Forterrier",
-  "Cocker",
-  "Pastor",
-  "Retriever",
-  "Dalmata",
-  "Husky",
-  "Pitbull",
-  "Doberman",
-  "Dogo",
-  "Chihuahua",
-  "Gran Danes",
-  "Mastín",
-  "Perro Callejero",
-  "               ",
-  "Persa",
-  "Siames",
-  "Azul ruso",
-  "Angora",
-  "Siberiano",
-  "Maine Coon",
-  "Gato Callejero",
-  "               ",
-  "Otro",
-];
-
-export const tamanio = ["todos", "Grande", "Mediano", "Chico"];
-export const color = [
-  "todos",
-  "Blanco",
-  "Negro",
-  "Cafe oscuro",
-  "Cafe claro",
-  "Amarillo",
-  "Gris",
-  "Otro",
-];
 
 //filtros
 export const filterByBreed = (payload) => {
@@ -142,18 +79,24 @@ export const filterByIdent = (payload) => {
   };
 };
 
+
+
 export const getPets = () => {
   return async function (dispatch) {
     try {
-      let response = await axios.get("pets"
-      );
-    
+      const token= getToken();
+      const headers = {
+       Authorization: `Bearer ${token}`
+      };
+      let response = await axios.get("api/pets",{headers});
+      console.log('se envio el token correctamente al back')
       dispatch({
         type: GET_PETS,
         payload: response.data,
       });
     } catch (error) {
-      console.error("Error in get Pets: ", error);
+      console.error(error.message);
     }
   };
 };
+

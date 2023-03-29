@@ -10,7 +10,7 @@ function Landing() {
     <div>
       <h1 className=''>Landing</h1> 
 
-       <Link to="/Home">
+       <Link to="/home">
        <Button variant="contained">ir a home </Button>
        </Link>
        <Link to="/createPet">

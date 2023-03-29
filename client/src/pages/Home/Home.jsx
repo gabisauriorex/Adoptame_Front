@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import './Home.css'
-
+import { Notify } from '../../components/Notificacion/Notify';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -28,9 +28,6 @@ export default function Home() {
          <Filtres/> 
         </Grid>
           <Grid item xs={9} sm={9} md={9}>
-          
-
-    
           <Pets/>
         </Grid>
       </Grid>
