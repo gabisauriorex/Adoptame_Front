@@ -52,7 +52,8 @@ const Adopta = () => {
 				}}
 			>
 				{( {errors} ) => (
-					<Form className="formulario">            
+					<Form className="formulario">   
+							<h1>Formulario de adopcion</h1>         
 						<div>
 							<label htmlFor="nombre">Nombre del perro:</label>
 							<Field className="stiloDmerga"
