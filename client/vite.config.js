@@ -8,7 +8,7 @@ export default defineConfig({
 
   build: {
     chunkSizeWarningLimit: 800, // opcional, define el límite de tamaño de los archivos para las advertencias
-    rollupOptions: {
+   /*  rollupOptions: {
       input: './src/main.jsx',
       output: {
         dir: 'dist', // nombre de la carpeta de salida
@@ -21,7 +21,7 @@ export default defineConfig({
           ],
         },
       },
-    },
+    }, */
   },
   }
 )
