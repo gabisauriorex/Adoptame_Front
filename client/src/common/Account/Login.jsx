@@ -39,7 +39,8 @@ export default function Login() {
    
   //cuando carga el componente instancia y verfifica
   useEffect(() => {
-    storeToken(isAuthenticated, getAccessTokenSilently);
+    if(isAuthenticated)  //nueva validacion
+    { storeToken(isAuthenticated, getAccessTokenSilently); }
   }, [isAuthenticated, getAccessTokenSilently]);
 
 
