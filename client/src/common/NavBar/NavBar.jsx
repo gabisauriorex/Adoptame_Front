@@ -44,7 +44,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
 }));
@@ -106,13 +105,10 @@ const arrayNav2=[
 }
 ]
 
-
-
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
     <AppBar position="fixed" sx={{backgroundColor:'#fafafa' ,color:"Black" }} open={open} >
-  {/*    <Container maxWidth="xl" sx={{marginLeft:0 ,marginRight:0}} > */}
           <Toolbar>
             <IconButton
               size="large"
@@ -127,7 +123,6 @@ const arrayNav2=[
             <Typography
               variant="h6"
               noWrap
-              /*   component="div" */
               sx={{ display: { xs: 'none', sm: 'block', textDecoration: "none", color: "black" } }}
               className={theme.typography}
               component={Link}
@@ -142,19 +137,9 @@ const arrayNav2=[
             <Box sx={{ flexGrow: 1 }}>
               <SearchBar />
             </Box>
+              <Login/>
+         </Toolbar>
 
-            {/*   <Account/>  */}
-
-           {/*  <Button variant='outlined' size="small" color="primary">Login</Button> */}
-
-          <Login/>
-
-
-
-
-            {/* fin de account */}
-          </Toolbar>
-    {/*  </Container> */}
       </AppBar>
       <Drawer
         sx={{
@@ -178,12 +163,11 @@ const arrayNav2=[
         </DrawerHeader>
         <Divider />
        <List> 
-
         {arrayNav.map((item, index) => (
             <ListItem key={item.name}   >
               <ListItemButton  component={Link} to={item.path}>  
                  <ListItemIcon  >
-                  {/* {item.name==="Adopta"?<Pets/> : item.name==="Dona"?<Favorite />:<Home/>} */}
+                
                    {item.icon}
                 </ListItemIcon> 
                 <ListItemText primary={item.name} />

@@ -1,19 +1,14 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import {Box,Avatar}from '@mui/material'
-
 
 //========MUI========
-
 import { styled } from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import ButtonBase from '@mui/material/ButtonBase';
+import { Box,Grid ,Typography,ButtonBase} from '@mui/material'
+
 
 import './Profile.css'
 const Profile = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user } = useAuth0();
 
   console.log(user)
 
@@ -31,7 +26,6 @@ const Profile = () => {
       <Box
      
       >
-
         <Typography variant="h5" color="initial" sx={{ color:'#01579b'}} className="title">Tu perfil</Typography>
         <Grid container spacing={{ xs: 1, sm: 2, md: 2 }}  className='containerCard' >
         
@@ -78,26 +72,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-
-
-/* 
-  { isAuthenticated  && (
-        <>
-
-      
-            <Avatar
-              alt="Remy Sharp"
-              src={user.picture}
-              sx={{ width: 56, height: 56 }}
-            />
-
-            <h6>{user.name}</h6>
-            <p>{user.email}</p>
-   
-
-        </>
-       )
-      }
-
-*/

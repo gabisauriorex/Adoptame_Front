@@ -5,9 +5,6 @@ import  {LockOpen}  from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser,faLock } from '@fortawesome/free-solid-svg-icons';
 import {Notify} from '../../components/Notificacion/Notify'
-
-
-
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
 import {storeToken , getToken} from './Token';
@@ -50,9 +47,7 @@ export default function Login() {
   return (
 
   <>
-      
-      {
-         (!isAuthenticated)&&(
+       { (!isAuthenticated)&&(
           <Button variant='outlined' color='primary'
             onClick={() => loginWithRedirect()}
             startIcon={<LockOpen/>}
@@ -60,9 +55,6 @@ export default function Login() {
             Login
           </Button> )
       }
-
-        
-      
        {(isAuthenticated && user.email_verified===false)&&
     
         Notify('info', "Debe validar su cuenta vaya a su correo por favor!! ", 'bottom-end',20000)       
@@ -94,7 +86,7 @@ export default function Login() {
               onClose={handleCloseUserMenu}
             >
             
-            <MenuItem >
+          <MenuItem >
               <IconButton >
                 <Avatar alt={user.picture} src={user.picture} sizes="small" />
               </IconButton>
@@ -120,7 +112,7 @@ export default function Login() {
             </Menu>
           </Box>
       )}   
-  </>     
+    </>     
   
   );
 }

@@ -33,13 +33,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         scope: 'openId profile email'
       }}
   >
-{/*     <React.StrictMode> */}
     <BrowserRouter>
     <ThemeProvider theme={theme}>
       <App />
     </ThemeProvider>
      </BrowserRouter>  
-    {/* </React.StrictMode> */}
     </Auth0Provider>
   </Provider>,
 )

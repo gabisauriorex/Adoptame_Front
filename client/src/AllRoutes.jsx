@@ -8,11 +8,10 @@ import Dona from './components/Dona/Dona'
 import NavBar  from './common/NavBar/NavBar'
 import About from "./pages/About/About";
 import Profile from "./common/Account/Profile";
-import Loading from "./components/Loading/Loading";
 import CreatePet from "./components/CreatePet/CreatePet";
 
 function AllRoutes() {
-  //const location = useLocation();
+const location = useLocation();
 
   return (
     <div>
@@ -27,8 +26,6 @@ function AllRoutes() {
          <Route exact path="/createPet" element={<CreatePet/>} />
          <Route exact path="/profile" element={<Profile/>} />
         </Routes>
-
- 
 
      </div>
   );
