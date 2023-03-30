@@ -45,25 +45,25 @@ function Landing() {
           <Link to="/Home">
           <Button variant="contained">Adopta</Button>
           </Link>
-            <img src="/public/img/foto perros y gatos 2.jpg" alt=""/>
+            <img src="/img/foto perros y gatos 2.jpg" alt=""/>
           </div>
           <div class="slide">
           <Link to="/createPet">
         <Button variant="contained">Registrar animal</Button>
         </Link>
-            <img src="/public/img/foto perros y gatos.jpg" alt=""/>
+            <img src="/img/foto perros y gatos.jpg" alt=""/>
           </div>
           <div class="slide">
           <Link to="/Dona">
         <Button variant="contained">Ayudanos</Button>
         </Link>
-            <img src="/public/img/foto perro pidiendo.jpg" alt=""/>
+            <img src="/img/foto perro pidiendo.jpg" alt=""/>
           </div>
           <div class="slide">
           <Link to="/About">
         <Button variant="contained">Sobre nosotros</Button>
         </Link>
-            <img src="/public/img/foto perros y gatos 3.jpg" alt=""/>
+            <img src="/img/foto perros y gatos 3.jpg" alt=""/>
           </div>
 {/* <!--slide images end-->*/}
 {/*<!--automatic navigation start--> */}

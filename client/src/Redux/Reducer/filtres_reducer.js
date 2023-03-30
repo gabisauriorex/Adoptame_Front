@@ -8,9 +8,11 @@ import {
 } from "../ActionsTypes/actions_types";
 import { pets } from "../../Datos";
 
+
+
 const initialState = {
-  pets: pets,
-  copia_pets2: pets,
+  pets:[] ,//[],
+  copia_pets2: []//[],
 };
 
 function filtres_reducer(state = initialState, action) {
@@ -20,7 +22,7 @@ function filtres_reducer(state = initialState, action) {
       return {
         ...state,
         pets: action.payload,
-        //copia_pets2: pets,
+        copia_pets2: action.payload,
       };
 
     //FILTROS

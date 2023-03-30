@@ -12,7 +12,7 @@ function About() {
               “cosas” para ser utilizadas por el ser humano. Rechazamos todo tipo de explotación 
               animal, incluyendo su uso como vestimenta, comida, entretenimiento y experimentació
             </p>
-            <img src="/public/img/img about us 1.jpg" alt="cat and dog" width="1024" height="450"/>
+            <img src="/img/img about us 1.jpg" alt="cat and dog" width="1024" height="450"/>
               <h2>Nuestros objetivos:</h2>
             <ul>
               <li>Luchar contra el abandono, el maltrato y el sufrimiento animal.</li>

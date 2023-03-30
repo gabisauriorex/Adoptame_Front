@@ -19,8 +19,8 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { postPet } from "../../Redux/Actions/actions_pets";
-import { razas } from "../../Redux/Actions/actions_filter";
-import { color } from "../../Redux/Actions/actions_filter";
+import { razas,tamanio,color } from "../../ArrayDatos/arrayPets";
+
 import "./CreatePet.css";
 
 //react-hook-form
