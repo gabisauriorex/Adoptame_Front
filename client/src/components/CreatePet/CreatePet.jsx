@@ -19,7 +19,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { postPet } from "../../Redux/Actions/actions_pets";
-import { razas,tamanio,color } from "../../ArrayDatos/arrayPets";
+import { razas, tamanio, color } from "../../ArrayDatos/arrayPets";
 
 import "./CreatePet.css";
 import { uploadImage } from "../../firebase/config";
@@ -254,14 +254,14 @@ function CreatePet() {
               minHeight: "100px",
               padding: "10px",
             }}
-          > 
+          >
             <input
               id="image"
               aria-describedby="image-helper"
               type="file"
               name="image"
               //value={input.image}
-              onChange={ e => handleImage(e.target.files[0])}
+              onChange={e => handleImage(e.target.files[0])}
             />
 
             <FormHelperText id="image-helper">
@@ -568,6 +568,4 @@ function CreatePet() {
       </form>
     </div>
   );
-}
-
-export default CreatePet;
+}export default CreatePet;

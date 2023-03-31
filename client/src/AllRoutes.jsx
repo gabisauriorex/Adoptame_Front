@@ -25,24 +25,12 @@ function AllRoutes() {
         <Route exact path="/" element={<Landing />} />
         <Route exact path="/adopta" element={<Adopta />} />
         <Route exact path="/pets/:id" element={<Detail />} />
-        <Route exact={true} path="/home" element={
-          isAuthenticated ? (
-            <Link>
-              <Home />
-            </Link>
-          ) : (
-            <Navigate to="/" />
-          )} />
+        <Route exact={true} path="/home" element={<Home />} />
+    
         <Route exact path="/dona" element={<Dona />} />
         <Route exact path="/about" element={<About />} />
-        <Route exact={true} path="/createPet" element={
-          isAuthenticated ? (
-            <Link>
-              <CreatePet />
-            </Link>
-          ) : (
-            <Navigate to="/" />
-          )} />
+        <Route exact={true} path="/createPet" element={<CreatePet/>} />
+     
         <Route exact path="/profile" element={<Profile />} />
       </Routes>
     </div>
@@ -51,6 +39,24 @@ function AllRoutes() {
 
 export default AllRoutes;
 
+
+
+
+{/*     isAuthenticated ? (
+            <Link>
+              <Home />
+            </Link>
+          ) : (
+            <Navigate to="/" />
+          )} /> */}
+
+{/*   isAuthenticated ? (
+            <Link>
+              <CreatePet />
+            </Link>
+          ) : (
+            <Navigate to="/" />
+          )} /> */}
 
 /* import Home from "./pages/Home/Home";
 import Landing from "./pages/Landing/Landing";
