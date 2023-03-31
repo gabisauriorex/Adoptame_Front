@@ -7,7 +7,7 @@ function About() {
             <h1>Nuestra misión</h1>
             <p className={style.aboutUs}>"Adoptame" es una organización sin fines de lucro liderada por un grupo de 
               voluntarios que buscan superar la situación de sobrepoblación, abandono, crueldad e
-              indiferencia que viven millones de animales en nuestro país. (Buenos Aires/ Argentina).
+              indiferencia que viven millones de animales en nuestro país. (Buenos Aires/Argentina).
               Propiciamos una actitud de respeto hacia todas las especies, entendiendo que no son 
               “cosas” para ser utilizadas por el ser humano. Rechazamos todo tipo de explotación 
               animal, incluyendo su uso como vestimenta, comida, entretenimiento y experimentació
