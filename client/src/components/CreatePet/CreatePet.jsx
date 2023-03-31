@@ -22,6 +22,7 @@ import { postPet } from "../../Redux/Actions/actions_pets";
 import { razas,tamanio,color } from "../../ArrayDatos/arrayPets";
 
 import "./CreatePet.css";
+import { uploadImage } from "../../firebase/config";
 
 //react-hook-form
 
@@ -53,8 +54,6 @@ function CreatePet() {
     location: "",
   });
 
-
-
   //================handlerChange======================
   const handleChange = (e) => {
     console.log(e.target.value);
@@ -64,29 +63,15 @@ function CreatePet() {
     });
   };
 
-  const handleImage = (e) => {
-    console.log(e.target.files[0]);
-    const formdata = new FormData();
-    formdata.append = ('image', e.target.files[0]) 
-    formdata.append("upload_preset", "gamepalace");
-    formdata.append("cloud_name", "ddjreipc4");
-    fetch("https://res.cloudinary.com/ddjreipc4/image/upload/", {
-      method: "post",
-      body: formdata,
+  // FIREBASE
+
+  const handleImage = async (e) => {
+    const aux = await uploadImage(e)
+    setInput({
+      ...input,
+      image: aux
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setInput({
-          ...input,
-          imageurl: data.url,
-        });
-        setMiniImage(data.url);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  }
 
   const handleSelectBreed = (e) => {
     console.log(e.target.value);
@@ -270,14 +255,15 @@ function CreatePet() {
               padding: "10px",
             }}
           > 
-            <TextField
+            <input
               id="image"
               aria-describedby="image-helper"
               type="file"
               name="image"
               //value={input.image}
-              onChange={handleImage}
+              onChange={ e => handleImage(e.target.files[0])}
             />
+
             <FormHelperText id="image-helper">
               Ingrese una imagen
             </FormHelperText>
