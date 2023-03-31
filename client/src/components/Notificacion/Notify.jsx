@@ -1,13 +1,7 @@
-import { blueGrey } from '@mui/material/colors';
-import Swal from 'sweetalert2'
 
-
+import Swal  from 'sweetalert2'
 
 /* 
-
-
-
-
 Esta función se llama Notify y acepta cuatro parámetros:
 
 
@@ -27,8 +21,8 @@ posicion:  top, top-start, top-end, center, center-start, center-end, bottom, bo
         timer: time,
         timerProgressBar: true,
     
-        background:'#fafafa',  //color de fondo se puede poner otro
-        color:blueGrey,     //color del texto
+        background:'black',  //color de fondo se puede poner otro
+      color:'#01579b',     //color del texto
        didOpen: (toast) => {
             toast.addEventListener('mouseenter', Swal.stopTimer)
             toast.addEventListener('mouseleave', Swal.resumeTimer)

@@ -1,16 +1,13 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { Box ,IconButton,Avatar,Tooltip,Menu,MenuItem,Typography,Button} from '@mui/material';
-/* import {} from '@mui/material'; */
+
 import  {LockOpen}  from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser,faLock } from '@fortawesome/free-solid-svg-icons';
 import {Notify} from '../../components/Notificacion/Notify'
-
-/* import LoginButton from './LoginButton';
-import LogoutButton from './LogoutButton'*/
-
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
+import {storeToken , getToken} from './Token';
 
 export default function Login() {
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -30,21 +27,28 @@ export default function Login() {
 
   const {
     user,
-    isAuthenticated,
     loginWithRedirect,
     logout,
+    isLoading,
     returnTo,
-    isLoading
+    isAuthenticated,
+    getAccessTokenSilently,
+
   } = useAuth0();
 
+   
+  //cuando carga el componente instancia y verfifica
+  useEffect(() => {
+    if(isAuthenticated)  //nueva validacion
+    { storeToken(isAuthenticated, getAccessTokenSilently); }
+  }, [isAuthenticated, getAccessTokenSilently]);
 
 
+   
   return (
 
   <>
-      
-      {
-         (!isAuthenticated)&&(
+       { (!isAuthenticated)&&(
           <Button variant='outlined' color='primary'
             onClick={() => loginWithRedirect()}
             startIcon={<LockOpen/>}
@@ -52,13 +56,13 @@ export default function Login() {
             Login
           </Button> )
       }
-      
        {(isAuthenticated && user.email_verified===false)&&
     
         Notify('info', "Debe validar su cuenta vaya a su correo por favor!! ", 'bottom-end',20000)       
        } 
-
-      {isAuthenticated && (
+   
+      {isAuthenticated 
+        && (
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="menu login">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -83,7 +87,7 @@ export default function Login() {
               onClose={handleCloseUserMenu}
             >
             
-            <MenuItem >
+          <MenuItem >
               <IconButton >
                 <Avatar alt={user.picture} src={user.picture} sizes="small" />
               </IconButton>
@@ -109,7 +113,7 @@ export default function Login() {
             </Menu>
           </Box>
       )}   
-  </>     
+    </>     
   
   );
 }

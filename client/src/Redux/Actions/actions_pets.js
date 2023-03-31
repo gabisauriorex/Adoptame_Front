@@ -1,12 +1,13 @@
 import axios from "axios";
 
+
 //conexion entre front y back
 
 import { FORM_SUCCESS, GET_DETAIL_PETS } from "../ActionsTypes/actions_types";
 
 export const postPet = (formData) => {
   return async function (dispatch){
-    axios.post("pets", formData)
+    axios.post("/pets", formData)
       .then(() =>{
         dispatch({
           type: FORM_SUCCESS,
