@@ -82,7 +82,7 @@ export default function Detail(){
                             <Button variant="contained">Volver</Button>
                           </Stack>                           
                       </Link>
-                      <Link  to={'/CreatePet'}>
+                      <Link  to={'/Adopta'}>
                           <Stack direction="row">
                             <Button variant="contained">Adoptame</Button>
                           </Stack>                           

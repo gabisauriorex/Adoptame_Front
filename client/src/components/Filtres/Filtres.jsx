@@ -6,9 +6,8 @@ import {
     filterBySize,
     filterByColor,
     filterByIdent} from "../../Redux/Actions/actions_filter";
-import { tamanio } from "../../Redux/Actions/actions_filter";
-import { razas } from "../../Redux/Actions/actions_filter";
-import {color} from '../../Redux/Actions/actions_filter'
+import { tamanio,razas,color } from "../../ArrayDatos/arrayPets";
+
 //===========mui=================
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';

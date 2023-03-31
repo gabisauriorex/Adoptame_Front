@@ -12,11 +12,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
-import {ListItemButton,ListItemIcon,ListItemText,Divider,IconButton,Button} from '@mui/material';
+import {ListItemButton,ListItemIcon,ListItemText,Divider,IconButton,Button, Container} from '@mui/material';
 import patita from '../../Images/patita.ico'
 //=======================
 import SearchBar from '../SearchBar/SearchBar';
-import Account from '../Account/Account';
+import Login from '../Account/Login';
 import {Link} from "react-router-dom";
 import './NavBar.css'
  
@@ -44,7 +44,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
 }));
@@ -68,8 +67,8 @@ export default function NavBar() {
 
 const arrayNav=[
 {
-  name:  'Adopta',
-   path: '/Adopta',
+  name:  'Adopcion',
+   path: '/Home',
    icon: <Diversity1/>
 }
   ,
@@ -106,45 +105,41 @@ const arrayNav2=[
 }
 ]
 
-
-
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
     <AppBar position="fixed" sx={{backgroundColor:'#fafafa' ,color:"Black" }} open={open} >
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            onClick={handleDrawerOpen}
-            sx={{ mr: 1, ...(open && { display: 'none' }) }}
-          >
-          <MenuIcon sx={{color:'#01579b'}} />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-          /*   component="div" */
-            sx={{ display: { xs: 'none', sm: 'block' ,textDecoration:"none" , color:"black" } }}
-            className={theme.typography}
-            component={Link}
-            to="/Home"
-          >
-            Adoptame  
-         
-          <img src={patita} width="30px" height="30px" className='margenIzquierdo' />
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={handleDrawerOpen}
+              sx={{ mr: 1, ...(open && { display: 'none' }) }}
+            >
+              <MenuIcon sx={{ color: '#01579b' }} />
+            </IconButton>
+            <Typography
+              variant="h6"
+              noWrap
+              sx={{ display: { xs: 'none', sm: 'block', textDecoration: "none", color: "black" } }}
+              className={theme.typography}
+              component={Link}
+              to="/"
+            >
+              Adoptame
 
-          </Typography>
+              <img src={patita} width="30px" height="30px" className='margenIzquierdo' />
 
-          <Box sx={{flexGrow:1 }}>
-           <SearchBar/>   
-         </Box>
-    
-          <Account/>   
-        
-        </Toolbar>
+            </Typography>
+
+            <Box sx={{ flexGrow: 1 }}>
+              <SearchBar />
+            </Box>
+              <Login/>
+         </Toolbar>
+
       </AppBar>
       <Drawer
         sx={{
@@ -168,12 +163,11 @@ const arrayNav2=[
         </DrawerHeader>
         <Divider />
        <List> 
-
         {arrayNav.map((item, index) => (
             <ListItem key={item.name}   >
               <ListItemButton  component={Link} to={item.path}>  
                  <ListItemIcon  >
-                  {/* {item.name==="Adopta"?<Pets/> : item.name==="Dona"?<Favorite />:<Home/>} */}
+                
                    {item.icon}
                 </ListItemIcon> 
                 <ListItemText primary={item.name} />
