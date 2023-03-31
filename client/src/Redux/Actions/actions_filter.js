@@ -88,7 +88,7 @@ export const getPets = () => {
       const headers = {
        Authorization: `Bearer ${token}`
       };
-      let response = await axios.get("api/pets",{headers});
+      let response = await axios.get("/pets",{headers});
       console.log('se envio el token correctamente al back')
       dispatch({
         type: GET_PETS,

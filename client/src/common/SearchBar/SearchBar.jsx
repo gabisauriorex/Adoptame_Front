@@ -1,14 +1,9 @@
 import React from 'react'
-import { useState } from 'react';
 import { alpha, styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import { Search as SearchIcon } from '@mui/icons-material';
 
 export default function SearchBar() {
-
-
-
-
     const Search = styled('div')(({ theme }) => ({
         position: 'relative',
         border: '1px solid #01579b',
@@ -60,7 +55,6 @@ export default function SearchBar() {
 
   return (
     <div>
-    
           <Search sx={{ flexGrow: 1  }}>
           <SearchIconWrapper  sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
             <SearchIcon />

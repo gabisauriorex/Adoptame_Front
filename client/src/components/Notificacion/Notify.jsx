@@ -1,5 +1,5 @@
 
-import Swal from 'sweetalert2'
+import Swal  from 'sweetalert2'
 
 /* 
 Esta función se llama Notify y acepta cuatro parámetros:

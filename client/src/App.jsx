@@ -2,8 +2,11 @@
 import axios from 'axios'
 import './App.css'
 import AllRoutes from './AllRoutes'
-//axios.defaults.baseURL="http://localhost:3000/";
-axios.defaults.baseURL = "http://localhost:3000/"
+const {VITE_URL_BACK}=import.meta.env;
+
+axios.defaults.baseURL="http://localhost:3000/api";  //por el servidor local
+
+//axios.defaults.baseURL =VITE_URL_BACK;   //por el hosting render     
 function App() {
  return(
    <>
