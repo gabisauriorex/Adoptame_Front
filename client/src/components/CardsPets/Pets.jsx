@@ -25,10 +25,9 @@ function Pets() {
   
   
     return (
-        <div>
-         <Box sx={{ flexGrow: 1 ,margin:3 }}>
-          <Grid container spacing={1}>
-           <Grid container item spacing={2}>
+        <div className={style.gridContainer}>
+         <Box  sx={{ flexGrow: 1 ,margin:3 }}>
+           <Grid  container item spacing={2}>
            {pets?.map(p=>{
              return(
             <CardPet
@@ -40,7 +39,6 @@ function Pets() {
               description={p.description}
               />
           ) })}
-          </Grid>
           </Grid>
         </Box>
         <Box container  sx={{flexGrow:1 ,marginTop:10}} >

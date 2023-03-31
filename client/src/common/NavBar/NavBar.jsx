@@ -73,7 +73,7 @@ const arrayNav=[
 }
   ,
 {
-  name:  'Dona',
+  name:  'Doná',
    path: '/Dona',
    icon: <Favorite/>
 }
