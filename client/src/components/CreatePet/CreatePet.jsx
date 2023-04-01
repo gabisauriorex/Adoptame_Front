@@ -21,11 +21,17 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { postPet } from "../../Redux/Actions/actions_pets";
-import { razas, tamanio, color } from "../../ArrayDatos/arrayPets";
+import {
+  razas,
+  tamanio,
+  color,
+  diseases,
+  locations,
+  vaccines,
+} from "../../ArrayDatos/arrayPets";
 
 import "./CreatePet.css";
 import { uploadImage } from "../../firebase/config";
-import { diseases, locations, vaccines  } from "./datos.js"
 
 //react-hook-form
 const schema = yup.object().shape({
@@ -36,12 +42,14 @@ const schema = yup.object().shape({
   weight: yup.string().required("El peso es obligatorio"),
   age: yup.string().required("Es obligatorio seleccionar la edad"),
   color: yup.string().required("Seleccione el color"),
-  identified: yup.string().required("Seleccione la identificacion del animal")
-})
+  identified: yup.string().required("Seleccione la identificacion del animal"),
+});
 
 function CreatePet() {
-  
-  const { register, formState: { errors } } = useForm({ mode: "onTouched", resolver: yupResolver(schema) });
+  const {
+    register,
+    formState: { errors },
+  } = useForm({ mode: "onTouched", resolver: yupResolver(schema) });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -51,9 +59,6 @@ function CreatePet() {
   // const [enfer, setEnfer] = useState([]);
   // //location
   // const [lugar, setLugar] = useState([]);
-
-
-
 
   const [input, setInput] = useState({
     name: "",
@@ -84,12 +89,12 @@ function CreatePet() {
   // FIREBASE
 
   const handleImage = async (e) => {
-    const aux = await uploadImage(e)
+    const aux = await uploadImage(e);
     setInput({
       ...input,
-      image: aux
-    })
-  }
+      image: aux,
+    });
+  };
 
   const handleSelectBreed = (e) => {
     console.log(e.target.value);
@@ -143,7 +148,6 @@ function CreatePet() {
     dispatch(postPet(input));
     navigate("/");
   };
-  
 
   //styledComponents----------------
   const ageOptions = [
@@ -152,120 +156,119 @@ function CreatePet() {
     { value: "mayor a 5 años", label: "Más de 5 años" },
     { value: "mayor 10 años", label: "Más de 10 años" },
   ];
-  // // VACUNAS
-  // useEffect(() => {
-  //   async function getVacunas() {
-  //     const res = await axios.get("/vaccines");
-  //     setVacunas(res.data);
-  //   }
-  //   getVacunas();
-  // }, []);
-  // // DISEASES
-  // useEffect(() => {
-  //   async function getDisease() {
-  //     const res = await axios.get("/diseases");
-  //     setEnfer(res.data);
-  //   }
-  //   getDisease();
-  // }, []);
-  // // LOCATION
-  // useEffect(() => {
-  //   async function getLocation() {
-  //     const res = await axios.get("/locations");
-  //     setLugar(res.data);
-  //   }
-  //   getLocation();
-  // }, []);
 
   return (
     <div className="containerGral">
       <form onSubmit={(e) => enviarDatos(e)} className="containerForm">
-        <Typography variant="h6" component="h1">
-          Registro de Mascota
+        <Typography variant="h6" component="h1" 
+        sx={{ 
+          display: "flex",
+          backgroundColor: "rgba(200, 200, 200, 0.2)",
+          alignItems: "center",
+          padding:"10px",
+          justifyContent: "center",
+          border: "1px solid #ccc",
+          borderRadius: "5px",
+          width: "350px",
+          margin: "auto",
+          textDecoration: "none"
+                  }}>
+            Registro de Mascota
         </Typography>
 
         <Box
-  sx={{
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-  }}
->
-  {/* identified */}
-  
-  <Box sx={{ display: "inline-flex", width: "50%" }}>
-      <FormControl
-        margin="normal"
-        sx={{ display: "flex", width: "100%" }}
-      >
-      <FormControl>
-        <span>Mascota</span>
-      </FormControl>
-      <RadioGroup
-        sx={{
-          marginBottom: " 20px ",
-        }}
-        {...register("identified")}
-        error={!!errors.identified}
-        helperText={errors?.identified?.message}
-        id="demo-radio-buttons-group-label"
-        value={input.identified}
-        aria-labelledby="demo-radio-buttons-group-label"
-        name="radio-buttons-group"
-        onChange={handleSelectIdentified}
-        row
-      >
-        <FormControlLabel
-        sx={{
-          width: "50%",
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
-          value="encontra"
-          control={<Radio />}
-          label="Encontrado"
-          checked={input.identified === true}
-        />
-        <FormControlLabel
-          value="adopta"
-          control={<Radio />}
-          label="Para adoptar"
-          checked={input.identified === false}
-        />
-      </RadioGroup>
-      {errors.identified && (
-        <Typography variant="caption" color="error">
-          {errors.identified.message}
-        </Typography>
-      )}
-    </FormControl>
-  </Box>
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          {/* identified */}
 
-  {/* NOMBRE */}
-  <Box sx={{ width: "50%" }}>
-    <FormControl margin="normal" sx={{ display: "flex", width: "100%" }}>
-      <TextField
-        {...register("name")}
-        error={!!errors.name}
-        helperText={errors?.name?.message}
-        id="outlined-basic"
-        label="Nombre de Mascota"
-        variant="outlined"
-        type="text"
-        name="name"
-        value={input.name}
-        onChange={(e) => handleChange(e)}
-      />
-      <FormHelperText id="name-helper">
-        Ingrese el nombre del animal
-      </FormHelperText>
-    </FormControl>
-  </Box>
-</Box>
+          <Box sx={{ display: "inline-flex", width: "50%" }}>
+            <FormControl
+              margin="normal"
+              sx={{ 
+                display: "flex", 
+                width: "100%", 
+                marginBottom: "30px",
+                marginRight: "10px",
+                border: "1px solid #ccc",
+                borderRadius: "5px",
+                height: "57px"
+                }}
+            >
+              <FormControl className="color_title" sx={{ fontSize: "15px" }}>
+                <span>Mascota</span>
+              </FormControl>
+              <RadioGroup
+                {...register("identified")}
+                error={!!errors.identified}
+                helperText={errors?.identified?.message}
+                id="demo-radio-buttons-group-label"
+                value={input.identified}
+                aria-labelledby="demo-radio-buttons-group-label"
+                name="radio-buttons-group"
+                onChange={handleSelectIdentified}
+                row
+              >
+                <FormControlLabel
+                  sx={{
+                    width: "50%",
+                    display: "flex",
+                    justifyContent: "flex-end",
+                  }}
+                  value="encontra"
+                  control={<Radio sx={{fontSize: "15px"}}/>}
+                  label="Encontrado"
+                  checked={input.identified === true}
+                />
+                <FormControlLabel
+                  value="adopta"
+                  control={<Radio />}
+                  label="Para adoptar"
+                  checked={input.identified === false}
+                />
+              </RadioGroup>
+              {errors.identified && (
+                <Typography variant="caption" color="error">
+                  {errors.identified.message}
+                </Typography>
+              )}
+              <FormHelperText id="identified-helper" sx={{marginTop: "-5px"}}>
+                Seleccione el estado del animal
+              </FormHelperText>
+            </FormControl>
+          </Box>
 
-          {/* peso */}
-          <Box sx={{ display: "flex", width: "100%" }}>
+          {/* NOMBRE */}
+          <Box sx={{ width: "50%" }}>
+            <FormControl
+              margin="normal"
+              sx={{ display: "flex", width: "100%" }}
+            >
+              <TextField
+                {...register("name")}
+                error={!!errors.name}
+                helperText={errors?.name?.message}
+                id="outlined-basic"
+                label="Nombre de Mascota"
+                variant="outlined"
+                type="text"
+                name="name"
+                value={input.name}
+                onChange={(e) => handleChange(e)}
+              />
+              <FormHelperText id="name-helper">
+                Ingrese el nombre del animal
+              </FormHelperText>
+            </FormControl>
+          </Box>
+        </Box>
+
+        {/* peso */}
+        <Box sx={{ display: "flex", width: "100%" }}>
           <FormControl
             margin="normal"
             sx={{
@@ -277,7 +280,8 @@ function CreatePet() {
           >
             <TextField
               {...register("weight")}
-              error={!!errors.weight} helperText={errors?.weight?.message}
+              error={!!errors.weight}
+              helperText={errors?.weight?.message}
               id="outlined-basic"
               label="Peso"
               variant="outlined"
@@ -287,30 +291,36 @@ function CreatePet() {
               onChange={(e) => handleChange(e)}
             />
             {/* {errors.weight && <Typography variant="caption" color="error">{errors.weight.message}</Typography>} */}
-            <FormHelperText id="weight-helper">
-              Ingrese el peso
-            </FormHelperText>
+            <FormHelperText id="weight-helper">Ingrese el peso</FormHelperText>
           </FormControl>
 
           {/* imagen  */}
-          
+
           <FormControl
             margin="normal"
             sx={{
               display: "inline-flex",
+              border: "1px solid #ccc",
+              borderRadius: "5px",
               flexWrap: "wrap",
+              padding: "15px",
               width: "49%",
-              minHeight: "100px",
-              marginLeft: "10px"
+              height: "57px",
+              marginLeft: "10px",
             }}
           >
             <input
               id="image"
+              sx={{
+                display: "flex",
+                padding: "20px",
+                alignItems: "center"
+              }}
               aria-describedby="image-helper"
               type="file"
               name="image"
               //value={input.image}
-              onChange={e => handleImage(e.target.files[0])}
+              onChange={(e) => handleImage(e.target.files[0])}
             />
 
             <FormHelperText id="image-helper">
@@ -318,7 +328,6 @@ function CreatePet() {
             </FormHelperText>
           </FormControl>
         </Box>
-        
 
         {/* animal */}
         <Box sx={{ display: "flex", width: "100%" }}>
@@ -334,7 +343,8 @@ function CreatePet() {
             <InputLabel>Tipo</InputLabel>
             <Select
               {...register("animal")}
-              error={!!errors.animal} helperText={errors?.animal?.message}
+              error={!!errors.animal}
+              helperText={errors?.animal?.message}
               name="animal"
               aria-describedby="animal-helper"
               value={input.animal}
@@ -345,7 +355,11 @@ function CreatePet() {
                 return <MenuItem value={m}>{m}</MenuItem>;
               })}
             </Select>
-            {errors.animal && <Typography variant="caption" color="error">{errors.animal.message}</Typography>}
+            {errors.animal && (
+              <Typography variant="caption" color="error">
+                {errors.animal.message}
+              </Typography>
+            )}
             <FormHelperText id="animal-helper">
               Seleccione el tipo de animal
             </FormHelperText>
@@ -364,7 +378,8 @@ function CreatePet() {
             <InputLabel>Raza</InputLabel>
             <Select
               {...register("breed")}
-              error={!!errors.breed} helperText={errors?.breed?.message}
+              error={!!errors.breed}
+              helperText={errors?.breed?.message}
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               name="breed"
@@ -376,7 +391,11 @@ function CreatePet() {
                 return <MenuItem value={name}>{name}</MenuItem>;
               })}
             </Select>
-            {errors.breed && <Typography variant="caption" color="error">{errors.breed.message}</Typography>}
+            {errors.breed && (
+              <Typography variant="caption" color="error">
+                {errors.breed.message}
+              </Typography>
+            )}
             <FormHelperText id="breed-helper">
               Seleccione la raza del animal
             </FormHelperText>
@@ -395,7 +414,8 @@ function CreatePet() {
             <InputLabel id="demo-simple-select-label">Tamaño</InputLabel>
             <Select
               {...register("height")}
-              error={!!errors.height} helperText={errors?.height?.message}
+              error={!!errors.height}
+              helperText={errors?.height?.message}
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               label="Tamaño"
@@ -403,11 +423,15 @@ function CreatePet() {
               value={input.height}
               onChange={(e) => handleChange(e)}
             >
-              {["Grande", "Mediano", "Chico"].map((t) => {
+              {tamanio.map((t) => {
                 return <MenuItem value={t}>{t}</MenuItem>;
               })}
             </Select>
-            {errors.height && <Typography variant="caption" color="error">{errors.height.message}</Typography>}
+            {errors.height && (
+              <Typography variant="caption" color="error">
+                {errors.height.message}
+              </Typography>
+            )}
             <FormHelperText id="animal-helper">
               Seleccione el tamaño del animal
             </FormHelperText>
@@ -426,7 +450,8 @@ function CreatePet() {
             <InputLabel id="demo-simple-select-label">Color</InputLabel>
             <Select
               {...register("color")}
-              error={!!errors.color} helperText={errors?.color?.message}
+              error={!!errors.color}
+              helperText={errors?.color?.message}
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               label="color"
@@ -436,7 +461,11 @@ function CreatePet() {
                 return <MenuItem value={c}>{c}</MenuItem>;
               })}
             </Select>
-            {errors.color && <Typography variant="caption" color="error">{errors.color.message}</Typography>}
+            {errors.color && (
+              <Typography variant="caption" color="error">
+                {errors.color.message}
+              </Typography>
+            )}
             <FormHelperText id="animal-helper">
               Seleccione el color del animal
             </FormHelperText>
@@ -459,6 +488,7 @@ function CreatePet() {
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select-label"
+              sx={{ width: "auto" }}
               name="vaccine"
               value={input.vaccine}
               label="Vacunas"
@@ -466,10 +496,14 @@ function CreatePet() {
             >
               {vaccines.map((vacuna) => {
                 return <MenuItem value={vacuna}>{vacuna}</MenuItem>;
-              })} 
+              })}
             </Select>
+            <FormHelperText id="vaccine-helper">
+                Seleccione las vacunas que posee el animal
+            </FormHelperText>
           </FormControl>
         </Box>
+
         {/* DISEASES*/}
         <Box sx={{ display: "flex", width: "100%" }}>
           <FormControl
@@ -491,10 +525,12 @@ function CreatePet() {
               onChange={(e) => setInput({ ...input, disease: e.target.value })}
             >
               {diseases.map((e) => {
-                return (
-                <MenuItem value={e.name}>{e.name}</MenuItem> 
-              )})}
+                return <MenuItem value={e.name}>{e.name}</MenuItem>;
+              })}
             </Select>
+            <FormHelperText id="disease-helper">
+                Seleccione las enfermedades, si es que posee
+            </FormHelperText>
           </FormControl>
 
           {/* LOCATION*/}
@@ -518,8 +554,11 @@ function CreatePet() {
             >
               {locations.map((e) => {
                 return <MenuItem value={e}>{e}</MenuItem>;
-              })} 
+              })}
             </Select>
+            <FormHelperText id="location-helper">
+                Seleccione el lugar en el que se encuentra el animal
+            </FormHelperText>
           </FormControl>
         </Box>
 
@@ -532,14 +571,16 @@ function CreatePet() {
               flexWrap: "wrap",
               width: "50%",
               minHeight: "100px",
-              marginRight: "15px"
+              marginRight: "15px",
             }}
           >
             <InputLabel>Edad</InputLabel>
             <Select
-              {...register("age")}age
-              error={!!errors.age} helperText={errors?.age?.message}
-              label= "Edad"
+              {...register("age")}
+              age
+              error={!!errors.age}
+              helperText={errors?.age?.message}
+              label="Edad"
               value={input.age}
               onChange={handleChange}
               name="age"
@@ -550,10 +591,15 @@ function CreatePet() {
                 </MenuItem>
               ))}
             </Select>
-            {errors.age && <Typography variant="caption" color="error">{errors.age.message}</Typography>}
+            {errors.age && (
+              <Typography variant="caption" color="error">
+                {errors.age.message}
+              </Typography>
+            )}
             <FormHelperText>Ingrese la edad</FormHelperText>
           </FormControl>
 
+          {/* GENERO */}
           <Box
             sx={{
               width: "50%",
@@ -564,10 +610,17 @@ function CreatePet() {
           >
             <FormControl
               margin="normal"
-              sx={{ display: "flex", width: "100%" }}
+              sx={{ 
+                display: "flex", 
+                width: "100%", 
+                border: "1px solid #ccc",
+                borderRadius: "5px",
+                height: "57px",
+                marginBottom: "50px"
+              }} 
             >
-              <FormLabel id="demo-radio-buttons-group-label">
-                <span className="color_title">Genero</span>
+              <FormLabel id="demo-radio-buttons-group-label" >
+                <span className="color_title"  sx={{ fontSize: "15px" }}>Genero</span>
               </FormLabel>
               <RadioGroup
                 value={input.sex}
@@ -577,8 +630,8 @@ function CreatePet() {
                 row
                 margin="normal"
                 sx={{
-                  marginBottom: " 20px ",
-                  marginLeft: "10px"
+                  marginBottom:"-10px",
+                  marginLeft: "10px",
                 }}
               >
                 <FormControlLabel
@@ -599,6 +652,9 @@ function CreatePet() {
                   label="Hembra"
                 />
               </RadioGroup>
+              <FormHelperText id="sex-helper">
+                Seleccione el genero del animal
+            </FormHelperText>
             </FormControl>
           </Box>
         </Box>
@@ -629,7 +685,7 @@ function CreatePet() {
             </FormHelperText>
           </FormControl>
         </Box>
-        
+
         <FormControl className="containerBoton">
           <Button variant="contained" type="submit" margin="normal">
             Enviar
@@ -638,4 +694,5 @@ function CreatePet() {
       </form>
     </div>
   );
-}export default CreatePet;
+}
+export default CreatePet;

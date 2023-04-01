@@ -15,7 +15,6 @@
     "@fortawesome/free-regular-svg-icons": "^6.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@hookform/resolvers": "^3.0.0",
     "@mui/icons-material": "^5.11.11",
     "@mui/joy": "^5.0.0-alpha.71",
     "@mui/material": "^5.11.13",
@@ -31,20 +30,15 @@
     "jsonwebtoken": "^9.0.0",
      "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.43.8",
+    "react-hook-form": "^7.43.6",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.7.0",
     "redux": "^4.2.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.2",
     "styled-components": "^5.3.9",
-<<<<<<< HEAD
-    "sweetalert2": "^11.7.3",
-    "yup": "^1.0.2"
-=======
     "uuid": "^9.0.0",
     "sweetalert2": "^11.7.3"
->>>>>>> 6b6351ac51aa5bf44094141298964c1f9bdf724e
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
