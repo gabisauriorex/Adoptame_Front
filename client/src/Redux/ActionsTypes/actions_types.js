@@ -11,5 +11,8 @@ export const FILTER_BY_SIZE = 'FILTER_BY_SIZE';
 export const FILTER_BY_ANIMAL = 'FILTER_BY_ANIMAL';
 export const FILTER_BY_IDENT = 'FILTER_BY_IDENT';
 
+//user
+export const CREATE_USER = 'CREATE_USER'
+
 
 

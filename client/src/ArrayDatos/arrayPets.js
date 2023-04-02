@@ -16,6 +16,13 @@ export const diseases = [
   {name: "Cistitis", severity: 4},
   {name: "Alergia", severity: 3}
 ];
+// !!!Array de edades:
+export const ageOptions = [
+  { value: "menor a 1 año", label: "Menos de 1 año" },
+  { value: "mayor a 1 año", label: "Más de 1 año" },
+  { value: "mayor a 5 años", label: "Más de 5 años" },
+  { value: "mayor 10 años", label: "Más de 10 años" },
+];
 // !!!Array de locations:
 export const locations = [
   "Buenos Aires",
