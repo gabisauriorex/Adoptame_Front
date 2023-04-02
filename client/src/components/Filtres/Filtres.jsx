@@ -49,7 +49,7 @@ const dispatch=useDispatch();
       }
 
   return (
-      <>
+      <div className="FiltreClass">
           <Typography variant="h5" paddingLeft={5} paddingRight={5} className="color_title">FILTROS</Typography>
           <FormControl sx={{marginTop:1}}>
               <FormLabel id="demo-radio-buttons-group-label"><span className="color_title">Mascota</span></FormLabel>
@@ -133,7 +133,7 @@ const dispatch=useDispatch();
               </FormControl>      
    
      
-    </>
+    </div>
      
   );
 }

@@ -1,14 +1,18 @@
 
-.container {
-    display: 'flex';
-    flex-direction: 'row';
+.FiltreClass {
+    display: flex;
+    flex-direction: column;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-
+    margin-top: '30px';
+    min-height: 100vh;
+    flex-grow: 1;
 }
 .color_title{
     color: #0277bd;
 /*     color: #0f4d71; */
 }
+
+
 

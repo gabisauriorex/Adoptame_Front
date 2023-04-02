@@ -21,8 +21,6 @@ function Pets() {
   useEffect(() => {
     handleGetPets() 
   }, [dispatch]);
-
-  
   
     return (
         <div className={style.gridContainer}>
@@ -31,12 +29,15 @@ function Pets() {
            {pets?.map(p=>{
              return(
             <CardPet
-             id={p.id}
+              id={p.id}
               image={p.image}
               name={p.name}
-              edad={p.edad}
-              sexo={p.sexo}
-              description={p.description}
+              age={p.age}
+              sex={p.sex}
+              description={p.description}              
+              animal={p.animal}              
+              breed={p.breed}
+              height={p.height}                                                                              
               />
           ) })}
           </Grid>

@@ -16,7 +16,7 @@ const Img = styled('img')({
   padding:'1px'
 });
 
-function CardPet({id,image,name,sexo,edad}) 
+function CardPet({id,image,name,sex,age}) 
 {
   const path=`/pets/${id}`; 
      return ( 
@@ -28,23 +28,23 @@ function CardPet({id,image,name,sexo,edad})
                   </Grid>
                   <Grid item xs={12} sm={4} md={4}>
                       <Button component={Link} to={path} >
-                      <Img alt="complex" src={image} />
+                      <Img alt="IMG" src={image} />
                       </Button>
                   </Grid>
                   <Grid item xs={12} className='containerText' >
                       <Box sx={{width:'100%', display:'flex',flexDirection:'row' ,justifyContent:'space-around',alignItems:'center'}}>
                       <Typography
                           noWrap
-                          variant="subtitle2" 
+                          variant="p" 
                           padding={1}                          
                       >
-                          {edad}
+                          {age}
                       </Typography>
                       <Typography
-                          variant="subtitle2"
+                          variant="p"
                           padding={1}
                            >
-                          {sexo}
+                          {sex}
                       </Typography>
                       </Box>
                   </Grid>

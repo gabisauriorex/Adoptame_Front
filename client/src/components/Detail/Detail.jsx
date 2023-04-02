@@ -18,42 +18,17 @@ const Img = styled('img')({
   borderRadius:"5px",
   padding:'1px'
 });
-const ExpandMore = styled((props) => {
-const { expand, ...other } = props;
-return <IconButton {...other} />;
-        })
-  (({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-    }),
-    }));
     
 export default function Detail(){
     const dispatch = useDispatch();
     const {id} = useParams();
+    const detail = useSelector((state) => state.pets_reducer.detail);
+   async function handleGetDetail(id){
+    dispatch(getDetails(id));   
+   }
     useEffect(() => {
-        dispatch(getDetails(id));   
+        handleGetDetail(id);   
     },[dispatch]);
-   const detail = useSelector((state) => state.detail);
-   const ejemplo = {
-		  id: "1",
-      name: "Pichi",
-      image:
-        "https://www.lavanguardia.com/files/og_thumbnail/uploads/2022/03/15/62308d3f4a45d.png",
-      description: "una perra buena ",
-      timewait: "20/03/2015",
-      breed: "cokkie",
-      animal: "perro",
-      height: 7,
-      color: "Otro",
-      identified: true,
-      vacunas: "todas",
-      edad: "4 años",
-      sexo: "Hembra",
-      especie: "perro",
-	}
     return (
         <div >  
             <Box  className="containerDetail">
@@ -62,16 +37,14 @@ export default function Detail(){
                         <Grid container  item xs={5} md={100} >
                         <Card>
                             <CardContent>
-                                <Img alt="complex" src={ejemplo.image}/> {/* cambiar ek ejemplo.etc por detail.etc cuando este la base del back */}
-                                <Typography paragraph>Nombre: {ejemplo.name}</Typography>
-                                <Typography paragraph>Descripcion: {ejemplo.description}</Typography>
-                                <Typography paragraph>Raza: {ejemplo.breed}</Typography>
-                                <Typography paragraph>Altura: {ejemplo.height}</Typography>
-                                <Typography paragraph>Color: {ejemplo.color}</Typography>
-                                <Typography paragraph>Vacunas: {ejemplo.vacunas}</Typography>
-                                <Typography paragraph>Edad: {ejemplo.edad}</Typography>
-                                <Typography paragraph>Sexo: {ejemplo.sexo}</Typography>
-                                <Typography paragraph>Animal: {ejemplo.especie}</Typography>                               
+                            <Img alt="IMG" src={detail?.image}/> 
+                                <Typography paragraph>Nombre: {detail?.name}</Typography>
+                                <Typography paragraph>Descripcion: {detail?.description}</Typography>
+                                <Typography paragraph>Raza: {detail?.breed}</Typography>
+                                <Typography paragraph>Altura: {detail?.height}</Typography>
+                                <Typography paragraph>Edad: {detail?.age}</Typography>
+                                <Typography paragraph>Sexo: {detail?.sex}</Typography>
+                                <Typography paragraph>Animal: {detail?.animal}</Typography>                                
                             </CardContent>
                         </Card>
                         </Grid>                                   
