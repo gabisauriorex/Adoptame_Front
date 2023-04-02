@@ -1,8 +1,9 @@
 export const GET_PETS = "GET_PETS";
-export const GET_DETAIL_PETS = 'GET_DETAIL_PETS';
+export const GET_DETAIL_PETS = "GET_DETAIL_PETS";
+export const PAYMENT_MP = "PAYMENT_MP";
 
 //form
-export const FORM_SUCCESS = 'FORM_SUCCESS';
+export const FORM_SUCCESS = "FORM_SUCCESS";
 
 //filtros
 export const FILTER_BY_BREED = 'FILTER_BY_BREED';
