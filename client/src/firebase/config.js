@@ -22,6 +22,6 @@ export const uploadImage = async (file) => {
     console.log(file);
     const storageRef = ref(storage, `${Date.now()}-${file.name}`);
     await uploadBytes(storageRef, file);
-    alert("ya esta cargado");
+    //alert("ya esta cargado");
     return await getDownloadURL(storageRef);
 };
