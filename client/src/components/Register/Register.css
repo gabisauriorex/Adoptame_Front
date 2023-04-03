@@ -1,18 +1,19 @@
-.containerGral{
-        display: flex;
-        flex-direction: column;
-        width: 1300px;
-        text-decoration: none;
-        justify-content: center;
-}
-.containerForm{
+.form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 80%;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-        rgba(247, 244, 244, 0.3) 0px 1px 3px -1px;
-    margin-top: 1em;
-    border-radius: 8px;
-    /* border: 1px solid #000; */
-}
+    align-items: center;
+  }
+  
+  .form > * {
+    margin: 10px 0;
+    width: 450px;
+    height: 45;
+    margin-bottom: 5px;
+  }
+  
+  .button {
+    width: 200px;
+    height: 45px;
+    margin-top: 40px;
+    align-self: flex-end;
+  }

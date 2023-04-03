@@ -16,8 +16,8 @@ import {
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, {  useState } from "react";
+
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { postPet } from "../../Redux/Actions/actions_pets";
