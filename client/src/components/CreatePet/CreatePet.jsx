@@ -17,18 +17,14 @@ import {
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import React, {  useState } from "react";
-
+import React, {  useState, useEffect } from "react";
+import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { postPet } from "../../Redux/Actions/actions_pets";
 import {
   razas,
-  tamanio,
   color,
-  diseases,
-  locations,
-  vaccines,
   ageOptions
 } from "../../ArrayDatos/arrayPets";
 
@@ -55,12 +51,38 @@ function CreatePet() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // //vacuna
-  // const [vacunas, setVacunas] = useState([]);
-  // //disease
-  // const [enfer, setEnfer] = useState([]);
-  // //location
-  // const [lugar, setLugar] = useState([]);
+  // VACUNAS
+  const [vacunas, setVacunas] = useState([]);
+
+  useEffect(() => {
+    async function getVacunas() {
+      const res = await axios.get("api/vaccines");
+      setVacunas(res.data);
+    }
+    getVacunas();
+  }, []);
+
+    // DISEASES
+  const [enfer, setEnfer] = useState([]);
+
+  useEffect(() => {
+    async function getDisease() {
+      const res = await axios.get("api/diseases");
+      setEnfer(res.data);
+    }
+    getDisease();
+  }, []);
+
+  // LOCATION
+  const [lugar, setLugar] = useState([]);
+
+  useEffect(() => {
+    async function getLocation() {
+      const res = await axios.get("api/locations");
+      setLugar(res.data);
+    }
+    getLocation();
+  }, []);
 
   const [input, setInput] = useState({
     name: "",
@@ -489,8 +511,8 @@ function CreatePet() {
               label="Vacunas"
               onChange={(e) => setInput({ ...input, vaccine: e.target.value })}
             >
-              {vaccines.map((vacuna) => {
-                return <MenuItem value={vacuna.id}>{vacuna}</MenuItem>;
+              {vacunas.map((vacuna) => {
+                return <MenuItem value={vacuna.id}>{vacuna.name}</MenuItem>;
               })}
             </Select>
             <FormHelperText id="vaccine-helper">
@@ -519,7 +541,7 @@ function CreatePet() {
               label="Enfermedades"
               onChange={(e) => setInput({ ...input, disease: e.target.value })}
             >
-              {diseases.map((e) => {
+              {enfer.map((e) => {
                 return <MenuItem value={e.id}>{e.name}</MenuItem>;
               })}
             </Select>
@@ -547,8 +569,8 @@ function CreatePet() {
               label="Ciudad"
               onChange={(e) => setInput({ ...input, location: e.target.value })}
             >
-              {locations.map((e) => {
-                return <MenuItem value={e.id}>{e}</MenuItem>;
+              {lugar.map((e) => {
+                return <MenuItem value={e.id}>{e.name}</MenuItem>;
               })}
             </Select>
             <FormHelperText id="location-helper">
