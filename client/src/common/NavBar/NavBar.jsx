@@ -95,7 +95,7 @@ const arrayNav=[
 const arrayNav2=[
 
 { name:'Registro',
-  path:'/Register',
+  path:'/createUsuario',
   icon:  <GroupAdd/>
 }
 ,
