@@ -4,10 +4,11 @@
   align-items: center;
 }
 .containerGral{
+    margin-top: 300px;
         display: flex;
         flex-direction: column;
-        /* border: 20px solid #000; */
-        margin-top: 5em;
+        width: 1300px;
+        text-decoration: none;
         justify-content: center;
         align-items: center;
 }
