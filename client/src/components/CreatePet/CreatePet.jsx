@@ -490,7 +490,7 @@ function CreatePet() {
               onChange={(e) => setInput({ ...input, vaccine: e.target.value })}
             >
               {vaccines.map((vacuna) => {
-                return <MenuItem value={vacuna}>{vacuna}</MenuItem>;
+                return <MenuItem value={vacuna.id}>{vacuna}</MenuItem>;
               })}
             </Select>
             <FormHelperText id="vaccine-helper">
@@ -520,7 +520,7 @@ function CreatePet() {
               onChange={(e) => setInput({ ...input, disease: e.target.value })}
             >
               {diseases.map((e) => {
-                return <MenuItem value={e.name}>{e.name}</MenuItem>;
+                return <MenuItem value={e.id}>{e.name}</MenuItem>;
               })}
             </Select>
             <FormHelperText id="disease-helper">
@@ -548,7 +548,7 @@ function CreatePet() {
               onChange={(e) => setInput({ ...input, location: e.target.value })}
             >
               {locations.map((e) => {
-                return <MenuItem value={e}>{e}</MenuItem>;
+                return <MenuItem value={e.id}>{e}</MenuItem>;
               })}
             </Select>
             <FormHelperText id="location-helper">
