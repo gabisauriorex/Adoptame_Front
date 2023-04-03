@@ -409,7 +409,7 @@ function CreatePet() {
             margin="normal"
           >
             <InputLabel id="demo-simple-select-label">Tamaño</InputLabel>
-            <Select
+            <Input
               {...register("height")}
               error={!!errors.height}
               helperText={errors?.height?.message}
@@ -420,10 +420,7 @@ function CreatePet() {
               value={input.height}
               onChange={(e) => handleChange(e)}
             >
-              {tamanio.map((t) => {
-                return <MenuItem value={t}>{t}</MenuItem>;
-              })}
-            </Select>
+            </Input>
             {errors.height && (
               <Typography variant="caption" color="error">
                 {errors.height.message}
