@@ -10,9 +10,9 @@ const Adopta = () => {
 				initialValues={{
 					nombre: '',
 					nombre2: '',
-          calle: '',
-          altura: '',
-          telefono: ''
+          			calle: '',
+          			altura: '',
+          			telefono: ''
 				}}
 				validate={(valores) => {
 					let errores = {};		

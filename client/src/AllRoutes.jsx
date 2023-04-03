@@ -12,6 +12,7 @@ import About from "./pages/About/About";
 import Profile from "./common/Account/Profile";
 import CreatePet from "./components/CreatePet/CreatePet";
 import Dashboard from "./pages/Dashboard/Dashboard"
+
 import { useAuth0 } from '@auth0/auth0-react';
 
 
@@ -30,8 +31,7 @@ function AllRoutes() {
         <Route exact path="/dashboard" element={<Dashboard />}/>
         <Route exact path="/dona" element={<Dona />} />
         <Route exact path="/about" element={<About />} />
-        <Route exact={true} path="/createPet" element={<CreatePet/>} />
-     
+        <Route exact={true} path="/createPet" element={<CreatePet/>} />     
         <Route exact path="/profile" element={<Profile />} />
       </Routes>
     </div>

@@ -78,7 +78,7 @@ const dispatch=useDispatch();
                   {
                     razas.map(name=>{
                       return(
-                    <MenuItem value={name}>{name}</MenuItem>
+                    <MenuItem key={name}value={name}>{name}</MenuItem>
                       )
                     })
                   }        
@@ -108,7 +108,7 @@ const dispatch=useDispatch();
                 {
                   tamanio.map(t=>{
                     return(
-                      <MenuItem value={t}>{t}</MenuItem>
+                      <MenuItem key={t} value={t}>{t}</MenuItem>
                     )
                   })
                 }
@@ -125,7 +125,7 @@ const dispatch=useDispatch();
                   {
                     color.map(c=>{
                       return (
-                        <MenuItem value={c}>{c}</MenuItem>
+                        <MenuItem key={c}value={c}>{c}</MenuItem>
                       )
                     })
                   }
