@@ -84,12 +84,12 @@ export const filterByIdent = (payload) => {
 export const getPets = () => {
   return async function (dispatch) {
     try {
-      const token= getToken();
+     /*  const token= getToken();
       const headers = {
        Authorization: `Bearer ${token}`
-      };
-      let response = await axios.get("/pets",{headers});
-      console.log('se envio el token correctamente al back')
+      }; */
+      let response = await axios.get("/api/pets");
+      //console.log('se envio el token correctamente al back')
       dispatch({
         type: GET_PETS,
         payload: response.data,

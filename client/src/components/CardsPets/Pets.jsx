@@ -10,13 +10,13 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 
 function Pets() {
-  /*   const dispatch = useDispatch();  */
+     const dispatch = useDispatch();  
   const pets = useSelector((state) => state.filtres_reducer.pets);
   const [currentPage, setCurrentPage] = useState(1);
   const [postPage] = useState(8);
-  /*   useEffect(() => {
+     useEffect(() => {
     dispatch(getPets());
-  }, [dispatch]);  */
+  }, [dispatch]);  
 
   const lastPostIndex = currentPage * postPage;
   const firstPostIndex = lastPostIndex - postPage;
