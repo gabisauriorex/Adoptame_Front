@@ -10,24 +10,21 @@ import {
   Typography,
   Box,
   FormLabel,
+  Input,
   RadioGroup,
   Radio,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import React, {  useState } from "react";
-
+import React, {  useState, useEffect } from "react";
+import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { postPet } from "../../Redux/Actions/actions_pets";
 import {
   razas,
-  tamanio,
   color,
-  diseases,
-  locations,
-  vaccines,
   ageOptions
 } from "../../ArrayDatos/arrayPets";
 
@@ -54,12 +51,38 @@ function CreatePet() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // //vacuna
-  // const [vacunas, setVacunas] = useState([]);
-  // //disease
-  // const [enfer, setEnfer] = useState([]);
-  // //location
-  // const [lugar, setLugar] = useState([]);
+  // VACUNAS
+  const [vacunas, setVacunas] = useState([]);
+
+  useEffect(() => {
+    async function getVacunas() {
+      const res = await axios.get("api/vaccines");
+      setVacunas(res.data);
+    }
+    getVacunas();
+  }, []);
+
+    // DISEASES
+  const [enfer, setEnfer] = useState([]);
+
+  useEffect(() => {
+    async function getDisease() {
+      const res = await axios.get("api/diseases");
+      setEnfer(res.data);
+    }
+    getDisease();
+  }, []);
+
+  // LOCATION
+  const [lugar, setLugar] = useState([]);
+
+  useEffect(() => {
+    async function getLocation() {
+      const res = await axios.get("api/locations");
+      setLugar(res.data);
+    }
+    getLocation();
+  }, []);
 
   const [input, setInput] = useState({
     name: "",
@@ -409,7 +432,7 @@ function CreatePet() {
             margin="normal"
           >
             <InputLabel id="demo-simple-select-label">Tamaño</InputLabel>
-            <Select
+            <Input
               {...register("height")}
               error={!!errors.height}
               helperText={errors?.height?.message}
@@ -420,10 +443,7 @@ function CreatePet() {
               value={input.height}
               onChange={(e) => handleChange(e)}
             >
-              {tamanio.map((t) => {
-                return <MenuItem value={t}>{t}</MenuItem>;
-              })}
-            </Select>
+            </Input>
             {errors.height && (
               <Typography variant="caption" color="error">
                 {errors.height.message}
@@ -491,8 +511,8 @@ function CreatePet() {
               label="Vacunas"
               onChange={(e) => setInput({ ...input, vaccine: e.target.value })}
             >
-              {vaccines.map((vacuna) => {
-                return <MenuItem value={vacuna}>{vacuna}</MenuItem>;
+              {vacunas.map((vacuna) => {
+                return <MenuItem value={vacuna.id}>{vacuna.name}</MenuItem>;
               })}
             </Select>
             <FormHelperText id="vaccine-helper">
@@ -521,8 +541,8 @@ function CreatePet() {
               label="Enfermedades"
               onChange={(e) => setInput({ ...input, disease: e.target.value })}
             >
-              {diseases.map((e) => {
-                return <MenuItem value={e.name}>{e.name}</MenuItem>;
+              {enfer.map((e) => {
+                return <MenuItem value={e.id}>{e.name}</MenuItem>;
               })}
             </Select>
             <FormHelperText id="disease-helper">
@@ -549,8 +569,8 @@ function CreatePet() {
               label="Ciudad"
               onChange={(e) => setInput({ ...input, location: e.target.value })}
             >
-              {locations.map((e) => {
-                return <MenuItem value={e}>{e}</MenuItem>;
+              {lugar.map((e) => {
+                return <MenuItem value={e.id}>{e.name}</MenuItem>;
               })}
             </Select>
             <FormHelperText id="location-helper">

@@ -9,8 +9,6 @@ import {
 } from "../ActionsTypes/actions_types";
 import { pets } from "../../Datos";
 
-
-
 const initialState = {
   pets:[] ,//[],
   copia_pets2: []//[],
