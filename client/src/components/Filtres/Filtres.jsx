@@ -49,7 +49,7 @@ const dispatch=useDispatch();
       }
 
   return (
-      <>
+      <div className="FiltreClass">
           <Typography variant="h5" paddingLeft={5} paddingRight={5} className="color_title">FILTROS</Typography>
           <FormControl sx={{marginTop:1}}>
               <FormLabel id="demo-radio-buttons-group-label"><span className="color_title">Mascota</span></FormLabel>
@@ -78,7 +78,7 @@ const dispatch=useDispatch();
                   {
                     razas.map(name=>{
                       return(
-                    <MenuItem value={name}>{name}</MenuItem>
+                    <MenuItem key={name}value={name}>{name}</MenuItem>
                       )
                     })
                   }        
@@ -108,7 +108,7 @@ const dispatch=useDispatch();
                 {
                   tamanio.map(t=>{
                     return(
-                      <MenuItem value={t}>{t}</MenuItem>
+                      <MenuItem key={t} value={t}>{t}</MenuItem>
                     )
                   })
                 }
@@ -125,7 +125,7 @@ const dispatch=useDispatch();
                   {
                     color.map(c=>{
                       return (
-                        <MenuItem value={c}>{c}</MenuItem>
+                        <MenuItem key={c}value={c}>{c}</MenuItem>
                       )
                     })
                   }
@@ -133,7 +133,7 @@ const dispatch=useDispatch();
               </FormControl>      
    
      
-    </>
+    </div>
      
   );
 }

@@ -1,7 +1,11 @@
 import React from 'react'
 import style from './About.module.css'
+import NavBar from '../../common/NavBar/NavBar'
+
 function About() {
   return (
+    <div>
+      <NavBar />
     <div className={style.color}>
         <div className={style.recuadro}>
             <h1>Nuestra misión</h1>
@@ -12,7 +16,7 @@ function About() {
               “cosas” para ser utilizadas por el ser humano. Rechazamos todo tipo de explotación 
               animal, incluyendo su uso como vestimenta, comida, entretenimiento y experimentació
             </p>
-            <img src="/img/img about us 1.jpg" alt="cat and dog" width="1024" height="450"/>
+            <img className='imgAbout' src="/img/img about us 1.jpg" alt="cat and dog" width="1024" height="450"/>
               <h2>Nuestros objetivos:</h2>
             <ul>
               <li>Luchar contra el abandono, el maltrato y el sufrimiento animal.</li>
@@ -24,6 +28,7 @@ function About() {
             </ul>
         </div>    
 
+    </div>
     </div>
   )
 }

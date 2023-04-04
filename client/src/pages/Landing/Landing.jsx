@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import './Landing.css'
+import NavBar from '../../common/NavBar/NavBar'
 
 function Landing() {
   const [initialCounter, setInitialCounter] = useState(1);
@@ -30,6 +31,8 @@ function Landing() {
   }, [initialCounter]);
 
   return (
+    <div>    
+    <NavBar />
     <div className='land'>
 {/*  <!--image slider start--> */}
       <div class="slider">
@@ -87,6 +90,7 @@ function Landing() {
 {/* <!--image slider end--> */}
       <div >                       
       </div>
+    </div>
     </div>
   )
 }

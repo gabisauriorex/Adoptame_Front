@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPets } from "../../Redux/Actions/actions_filter";
 import CardPet from "../Card/CardPet";
 //import {pets} from '../../Datos.js'
-import style from "./Pets.module.css";
+import "./Pets.module.css";
 //===============
 import Paginate from "../Paginate/Paginate.jsx";
 import Box from "@mui/material/Box";
@@ -34,8 +34,8 @@ function Pets() {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
   return (
-    <div>
-      <Box sx={{ flexGrow: 1, margin: 3 }}>
+    <div className="styleContainer">
+      <Box sx={{ flexGrow: 1, marginTop: "7rem" }}>
         <Grid container spacing={1}>
           <Grid container item spacing={2}>
             {pets &&

@@ -30,6 +30,7 @@ import {
 
 import "./CreatePet.css";
 import { uploadImage } from "../../firebase/config";
+import NavBar from '../../common/NavBar/NavBar'
 
 //react-hook-form
 const schema = yup.object().shape({
@@ -177,6 +178,9 @@ function CreatePet() {
 
 
   return (
+    <div>
+      <NavBar />
+    
     <div className="containerGral">
       <form onSubmit={(e) => enviarDatos(e)} className="containerForm">
         <Typography variant="h6" component="h1" 
@@ -709,6 +713,7 @@ function CreatePet() {
           </Button>
         </FormControl>
       </form>
+    </div>
     </div>
   );
 }
