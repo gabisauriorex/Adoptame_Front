@@ -30,7 +30,6 @@ export default function Login() {
     loginWithRedirect,
     logout,
     isLoading,
-    returnTo,
     isAuthenticated,
     getAccessTokenSilently,
 
@@ -53,7 +52,7 @@ export default function Login() {
             onClick={() => loginWithRedirect()}
             startIcon={<LockOpen/>}
           >
-            Login
+           Iniciar Sesion
           </Button> )
       }
        {(isAuthenticated && user.email_verified===false)&&
@@ -98,7 +97,7 @@ export default function Login() {
               <IconButton>
                 <FontAwesomeIcon icon={faUser} />
               </IconButton>
-              <Typography variant='body1' textAlign="center" >Profile</Typography>
+              <Typography variant='body1' textAlign="center" >Perfil</Typography>
              </MenuItem>
             
             <MenuItem onClick={() =>logoutWithRedirect()}>
@@ -107,7 +106,8 @@ export default function Login() {
                 <IconButton>
                   <FontAwesomeIcon icon={faLock} />
                 </IconButton>
-                Logout</Typography>
+                Cerrar Sesion
+                </Typography>
             </MenuItem>
             
             </Menu>

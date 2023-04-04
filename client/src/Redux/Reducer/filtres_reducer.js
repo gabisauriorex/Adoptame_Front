@@ -5,6 +5,7 @@ import {
   FILTER_BY_COLOR,
   FILTER_BY_IDENT,
   FILTER_BY_SIZE,
+  SEARCH_BY_NAME
 } from "../ActionsTypes/actions_types";
 import { pets } from "../../Datos";
 
@@ -108,6 +109,15 @@ function filtres_reducer(state = initialState, action) {
           pets: action.payload === "todos" ? state.copia_pets2 : filter_ident,
         };
       }
+
+      //searchBar
+      case SEARCH_BY_NAME:
+        return{
+          ...state,
+          pets:action.payload,
+
+        }
+
     default:
       return state;
   }

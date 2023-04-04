@@ -21,7 +21,7 @@ posicion:  top, top-start, top-end, center, center-start, center-end, bottom, bo
         timer: time,
         timerProgressBar: true,
     
-        background:'black',  //color de fondo se puede poner otro
+        background:'#fafafa',  //color de fondo se puede poner otro
       color:'#01579b',     //color del texto
        didOpen: (toast) => {
             toast.addEventListener('mouseenter', Swal.stopTimer)
