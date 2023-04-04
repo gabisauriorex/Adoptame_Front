@@ -129,13 +129,12 @@ const arrayNav2=[
               to="/"
             >
               Adoptame
-
-              <img src={patita} width="30px" height="30px" className='margenIzquierdo' />
+            <img src={patita} width="30px" height="30px" className='margenIzquierdo' />
 
             </Typography>
 
             <Box sx={{ flexGrow: 1 }}>
-              <SearchBar />
+             <SearchBar /> 
             </Box>
               <Login/>
          </Toolbar>

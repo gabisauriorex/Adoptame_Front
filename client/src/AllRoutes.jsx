@@ -25,18 +25,18 @@ function AllRoutes() {
         <Route exact path="/pets/:id" element={<Detail />} />
         <Route exact/* ={true} */ path="/home" 
                element={
-                <ProtectLogin> 
+                 <ProtectLogin>  
                    <Home />
-                 </ProtectLogin> 
+                  </ProtectLogin>  
                 } />
         <Route exact path="/createUsuario" element={<Register />} />
         <Route exact path="/dona" element={<Dona />} />
         <Route exact path="/about" element={<About />} />
         <Route exact/* ={true} */ path="/createPet" 
           element={
-         <ProtectLogin>
+          <ProtectLogin> 
               <CreatePet />    
-         </ProtectLogin> 
+          </ProtectLogin>  
         } />
      
         <Route exact path="/profile" element={<Profile />} />
