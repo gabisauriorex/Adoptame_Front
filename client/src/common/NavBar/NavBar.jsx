@@ -14,10 +14,12 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import {ListItemButton,ListItemIcon,ListItemText,Divider,IconButton,Button, Container} from '@mui/material';
 import patita from '../../Images/patita.ico'
+import LoginButton from '../Account/LoginButton';
 //=======================
 import SearchBar from '../SearchBar/SearchBar';
 import Login from '../Account/Login';
 import {Link} from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 import './NavBar.css'
  
 
@@ -50,6 +52,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function NavBar() {
   const theme = useTheme(); 
+  const { isAuthenticated, loginWithRedirect } = useAuth0()
   const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -98,11 +101,11 @@ const arrayNav2=[
   path:'/createUsuario',
   icon:  <GroupAdd/>
 }
-,
-{ name:'login',
-  path:'/Login',
+/* ,
+{ name:'Iniciar sesion',
+  path: '/login',  
   icon:  <Lock/>
-}
+} */
 ]
 
   return (
@@ -118,7 +121,7 @@ const arrayNav2=[
               onClick={handleDrawerOpen}
               sx={{ mr: 1, ...(open && { display: 'none' }) }}
             >
-              <MenuIcon sx={{ color: '#01579b' }} />
+               <MenuIcon sx={{ color: '#01579b' }} /> 
             </IconButton>
             <Typography
               variant="h6"
@@ -126,18 +129,17 @@ const arrayNav2=[
               sx={{ display: { xs: 'none', sm: 'block', textDecoration: "none", color: "black" } }}
               className={theme.typography}
               component={Link}
-              to="/"
-            >
-              Adoptame
-            <img src={patita} width="30px" height="30px" className='margenIzquierdo' />
+              to="/home"
+            >Adoptame
+            <img src='./src/Images/patita.ico' width="30px" height="30px" className='margenIzquierdo' />
 
             </Typography>
 
             <Box sx={{ flexGrow: 1 }}>
-             <SearchBar /> 
+             <SearchBar />  
             </Box>
-              <Login/>
-         </Toolbar>
+            <Login/> 
+          </Toolbar>
 
       </AppBar>
       <Drawer
@@ -162,7 +164,7 @@ const arrayNav2=[
         </DrawerHeader>
         <Divider />
        <List> 
-        {arrayNav.map((item, index) => (
+        {arrayNav.map((item) => (
             <ListItem key={item.name}   >
               <ListItemButton  component={Link} to={item.path}>  
                  <ListItemIcon  >
@@ -174,7 +176,7 @@ const arrayNav2=[
             </ListItem>
           ))}
          <Divider/>
-          {arrayNav2.map((item2,index) => (
+          {arrayNav2.map((item2) => (
             <ListItem key={item2.name} disablePadding>
               <ListItemButton component={Link} to={item2.path}>
                 <ListItemIcon>

@@ -1,5 +1,5 @@
 
-.container {
+/* .container {
     display: 'flex';
     flex-direction: 'row';
     flex-wrap: nowrap;
@@ -9,6 +9,34 @@
 }
 .color_title{
     color: #0277bd;
-/*     color: #0f4d71; */
+
 }
 
+ */
+
+
+ .container {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     /* Modificado para que los elementos se envuelvan en filas nuevas */
+     justify-content: center;
+     align-items: center;
+     padding: 10px;
+     /* Agregado un padding para separar los elementos del borde de la ventana */
+ }
+
+ .color_title {
+     color: #0277bd;
+ }
+
+ @media (max-width: 768px) {
+
+     /* Estilos adicionales para pantallas con un ancho máximo de 768px */
+     .container {
+         flex-direction: column;
+         /* Cambiar a una dirección de columna para que los elementos se apilen verticalmente */
+         padding: 5px;
+         /* Reducir el padding para que los elementos se ajusten mejor en la pantalla */
+     }
+ }
