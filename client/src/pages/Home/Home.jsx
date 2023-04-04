@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import './Home.css'
 import { Notify } from '../../components/Notificacion/Notify';
-
+import NavBar from '../../common/NavBar/NavBar'
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -21,6 +21,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function Home() {
   return (
+    <div>
+      <NavBar />
     <div className='containerHome'>
   <Box /* sx={{ flexGrow: 1 }} */ sx={{ width: '100%'  }}  >
       <Grid /*  container spacing={0} */  container rowSpacing={1} columnSpacing={{ xs: 0, sm: 0, md: 0 }}>
@@ -33,6 +35,7 @@ export default function Home() {
       </Grid>
     </Box> 
        
+    </div>
     </div>
   )
 }

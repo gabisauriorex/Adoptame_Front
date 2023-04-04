@@ -18,7 +18,7 @@ const Img = styled('img')({
 
 function CardPet({id,image,name,sex,age}) 
 {
-  const path=`/pets/${id}`; 
+  const path=`/api/pets/${id}`; 
      return ( 
               <Paper className='containerCardPet'>
                   <Grid>

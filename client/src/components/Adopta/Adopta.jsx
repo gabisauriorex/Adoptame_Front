@@ -1,10 +1,14 @@
 import './Adopta.css'
 import React, {useState} from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import NavBar from '../../common/NavBar/NavBar'
 
 const Adopta = () => {
 	const [formularioEnviado, cambiarFormularioEnviado] = useState(false);
 	return (
+		<div>
+			  <NavBar />	
+
 		<div className="container">
 			<Formik
 				initialValues={{
@@ -110,6 +114,7 @@ const Adopta = () => {
 				)}
         </Formik>
         </div>
+		</div>
       );
     }
     export default Adopta;

@@ -13,14 +13,13 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import {ListItemButton,ListItemIcon,ListItemText,Divider,IconButton,Button, Container} from '@mui/material';
-import patita from '../../Images/patita.ico'
+import patita from '../../Images/patita.png'
 //=======================
 import SearchBar from '../SearchBar/SearchBar';
 import Login from '../Account/Login';
 import {Link} from "react-router-dom";
 import './NavBar.css'
- 
-
+import Stack from '@mui/material/Stack';
 
 const drawerWidth = 200;
 const AppBar = styled(MuiAppBar, {
@@ -137,7 +136,12 @@ const arrayNav2=[
             <Box sx={{ flexGrow: 1 }}>
               <SearchBar />
             </Box>
+            <Stack spacing={2} direction="row">
+              <Link to={'/dashboard'}>
+            <Button className='btn' variant="contained">Admin</Button>
+              </Link>
               <Login/>
+            </Stack>
          </Toolbar>
 
       </AppBar>

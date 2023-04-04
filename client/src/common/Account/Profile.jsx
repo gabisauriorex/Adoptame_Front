@@ -4,7 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 //========MUI========
 import { styled } from '@mui/material/styles';
 import { Box,Grid ,Typography,ButtonBase} from '@mui/material'
-
+import NavBar from '../../common/NavBar/NavBar'
 
 import './Profile.css'
 const Profile = () => {
@@ -21,6 +21,8 @@ const Profile = () => {
   });
 
   return (
+<div>
+<NavBar />
 
     <div className="container">
       <Box
@@ -67,7 +69,7 @@ const Profile = () => {
     
     </div>
 
-   
+    </div>
   );
 };
 

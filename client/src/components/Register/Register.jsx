@@ -18,6 +18,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { createUser } from "../../Redux/Actions/actions_user"
 import * as yup from "yup";
 import "./Register.css"
+import NavBar from '../../common/NavBar/NavBar'
 
 const schema = yup.object().shape({
   fullname: yup
@@ -105,6 +106,8 @@ function Register() {
   }, []);
 
   return (
+    <div>
+       <NavBar />
     <form onSubmit={(e) => enviarDatos(e)} className="form">
       <Typography variant="h6" component="h1" 
         sx={{ 
@@ -258,6 +261,8 @@ function Register() {
       </Box>
 
     </form>
+    
+    </div>
   );
 }
 
