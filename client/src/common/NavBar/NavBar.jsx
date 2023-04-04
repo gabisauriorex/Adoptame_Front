@@ -128,9 +128,9 @@ const arrayNav2=[
               sx={{ display: { xs: 'none', sm: 'block', textDecoration: "none", color: "black" } }}
               className={theme.typography}
               component={Link}
-              to="/home"
+              to="/"
             >Adoptame
-            <img src='./src/Images/patita.ico' width="30px" height="30px" className='margenIzquierdo' />
+            <img src='./src/Images/patita.png' width="30px" height="30px" className='margenIzquierdo' />
 
             </Typography>
 

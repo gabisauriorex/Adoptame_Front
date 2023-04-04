@@ -25,9 +25,9 @@ function AllRoutes() {
         <Route exact path="/api/pets/:id" element={<Detail />} />
         <Route exact/* ={true} */ path="/home" 
                element={
-                 <ProtectLogin>  
+                
                    <Home />
-                  </ProtectLogin>  
+                 
                 } />
             <Route exact path="/createUsuario" element={<Register />} />
             <Route exact path="/dashboard" element={<Dashboard />}/>
@@ -35,9 +35,9 @@ function AllRoutes() {
         <Route exact path="/about" element={<About />} />
         <Route exact/* ={true} */ path="/createPet" 
           element={
-          <ProtectLogin> 
+      
               <CreatePet />    
-          </ProtectLogin>  
+       
         } />
      
         <Route exact path="/profile" element={<Profile />} />
