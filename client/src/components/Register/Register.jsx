@@ -231,7 +231,7 @@ function Register() {
             </Select>
       </FormControl>
 
-      <FormControl sx={{
+      {/* <FormControl sx={{
         margin: "20px 0",
         marginRight:"11px",
         width: "350px",
@@ -253,7 +253,7 @@ function Register() {
             </MenuItem>
           ))}
         </Select>
-      </FormControl>
+      </FormControl> */}
 </Box>
       <Button type="submit" variant="contained" color="primary" className="button" sx={{ marginTop: "15px"}} >
         Crear Usuario
