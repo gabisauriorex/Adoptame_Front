@@ -32,9 +32,16 @@ import "./CreatePet.css";
 import { uploadImage } from "../../firebase/config";
 import NavBar from '../../common/NavBar/NavBar'
 
+
 //react-hook-form
 const schema = yup.object().shape({
-  name: yup.string().required("El nombre no puede estar vacio"),
+  name: yup.string()
+  .required("El nombre no puede estar vacio"),
+  // .test("unique", "El nombre ya existe", async function (value){
+  //   const response = await axios.get(`api/pets?name=${value}`);
+  //   const data = response.data;
+  //   return data.name? data.name === true : data.name !== true
+  // }),
   animal: yup.string().required("Es obligatorio seleccionar un tipo de animal"),
   breed: yup.string().required("Seleccione una raza de animal"),
   height: yup.string().required("Seleccione un tamaño aproximado"),
@@ -52,6 +59,8 @@ function CreatePet() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+
+
   // VACUNAS
   const [vacunas, setVacunas] = useState([]);
 
@@ -62,10 +71,20 @@ function CreatePet() {
     }
     getVacunas();
   }, []);
+  
+  
+  //PETS
+  const [mascota, setMascota] = useState([]);
+  useEffect(() => {
+    async function getPets() {
+      const res = await axios.get("api/pets");
+      setMascota(res.data)
+    }
+    getPets()
+  }, [])
 
     // DISEASES
   const [enfer, setEnfer] = useState([]);
-
   useEffect(() => {
     async function getDisease() {
       const res = await axios.get("api/diseases");
@@ -85,6 +104,7 @@ function CreatePet() {
     getLocation();
   }, []);
 
+
   const [input, setInput] = useState({
     name: "",
     image: "",
@@ -102,17 +122,34 @@ function CreatePet() {
     location: "",
   });
 
+
+  
+  const [error, setError] = useState("")
   //================handlerChange======================
   const handleChange = (e) => {
     console.log(e.target.value);
-    setInput({
-      ...input,
-      [e.target.name]: e.target.value,
-    });
+    let property = e.target.name
+    let value = e.target.value
+    if(property = "name"){
+     let validate =  mascota.find( e => e.name === value)
+     if(validate){
+        setError({
+          [property] : "El nombre ya existe"
+        })
+     }else{
+       setInput({
+         ...input,
+         [e.target.name]: e.target.value,
+       });
+       setError(
+        ""
+       )
+     }
+    } 
   };
 
-  // FIREBASE
 
+  // FIREBASE
   const handleImage = async (e) => {
     const aux = await uploadImage(e);
     setInput({
@@ -167,14 +204,13 @@ function CreatePet() {
       sex: e.target.value,
     });
   };
-  const enviarDatos = (e) => {
+  const enviarDatos = async (e) => {
     console.log(input);
     e.preventDefault();
-    dispatch(postPet(input));
-    navigate("/");
+      dispatch(postPet(input));
+      navigate("/");
   };
 
-  //styledComponents----------------
 
 
   return (
@@ -287,6 +323,11 @@ function CreatePet() {
               <FormHelperText id="name-helper">
                 Ingrese el nombre del animal
               </FormHelperText>
+              <Typography>
+                {
+                  error.name && <span>{error.name}</span>
+                }
+              </Typography>
             </FormControl>
           </Box>
         </Box>
@@ -574,7 +615,7 @@ function CreatePet() {
               onChange={(e) => setInput({ ...input, location: e.target.value })}
             >
               {lugar.map((e) => {
-                return <MenuItem value={e.id}>{e.name}</MenuItem>;
+                return <MenuItem value={e.id}>{e.province}</MenuItem>;
               })}
             </Select>
             <FormHelperText id="location-helper">

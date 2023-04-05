@@ -86,7 +86,7 @@ function Register() {
   };
   useEffect(() => {
     axios
-      .get("/pets")
+      .get("api/pets")
       .then((response) => {
         setPet(response.data);
       })
@@ -96,7 +96,7 @@ function Register() {
   }, []);
   useEffect(() => {
     axios
-      .get("/locations")
+      .get("api/locations")
       .then((response) => {
         setLocation(response.data);
       })
